@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    body {
+        @apply text-text
+    }
+
+    :focus:is(input, select, textarea) {
+        outline: none;
+    }
+}
