@@ -10,4 +10,10 @@
     :focus:is(input, select, textarea) {
         outline: none;
     }
+
+    .container {
+        max-width: 1200px;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }

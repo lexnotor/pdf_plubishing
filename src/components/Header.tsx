@@ -15,7 +15,7 @@ const Header = () => {
 
             <Space />
 
-            <p className="self-center text-5xl font-bold flex flex-col items-center">
+            <p className="self-center text-5xl font-bold flex flex-col items-center text-center">
                 <span>Uncover enchanting stories and connect</span>
                 <span>with the beauty of the natural world.</span>
             </p>
@@ -24,7 +24,7 @@ const Header = () => {
                 <Image alt="play icon" src={play_icon} width={150} />
             </figure>
 
-            <p className="self-center flex flex-col items-center">
+            <p className="self-center flex flex-col items-center text-center">
                 <span>
                     Gorillas are beautiful, resilient animals. But poaching and
                     habitat destruction

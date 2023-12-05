@@ -1,4 +1,6 @@
+import ContactSection from "@/components/ContactSection";
 import Header from "@/components/Header";
+import JourneySection from "@/components/JourneySection";
 import ProgramSection from "@/components/ProgramSection";
 
 const Page = () => {
@@ -7,6 +9,10 @@ const Page = () => {
             <Header />
 
             <ProgramSection />
+
+            <JourneySection />
+
+            <ContactSection />
         </div>
     );
 };
