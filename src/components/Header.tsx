@@ -8,7 +8,7 @@ import Space from "./Space";
 const Header = () => {
     return (
         <header
-            className="px-10 py-6 flex flex-col gap-8 justify-between text-white h-screen min-h-fit max-h-[60rem] bg-cover"
+            className="px-10 pt-6 pb-14 flex flex-col gap-8 justify-between text-white min-h-[55rem] max-h-[65rem] bg-cover"
             style={{ backgroundImage: `url(${bg_mountain.src})` }}
         >
             <Navbar />
