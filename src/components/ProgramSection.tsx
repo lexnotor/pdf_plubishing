@@ -6,7 +6,10 @@ import ProgramPagination from "./ProgramPagination";
 
 const ProgramSection = () => {
     return (
-        <section className="px-[6rem] py-[4rem] text bg-gradient-radial from-primary/20 from-5% to-50% to-white">
+        <section
+            id="our-programs"
+            className="px-[6rem] py-[4rem] text bg-gradient-radial from-primary/20 from-5% to-50% to-white"
+        >
             <h2 className="text-2xl font-bold" title="Nos Programmes">
                 Nos Programmes
             </h2>
