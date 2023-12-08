@@ -9,6 +9,7 @@ import people_walking from "@/assets/images/Fossey Gorilla/people_walking.jpg";
 import open_book from "@/assets/images/book-open.svg";
 import Image from "next/image";
 import Space from "./Space";
+import Link from "next/link";
 
 const programs = [
     gorilla_eating,
@@ -42,8 +43,14 @@ const ProgramList = () => {
                             Pistage de gorille
                         </p>
                         <p className="text-[85%] font-medium">
-                            Saving Earth Magazine - Preserve british
-                            collumbia’s, The impact Report
+                            <Link
+                                href={
+                                    "saving_earth_magazine_preserve_british_collumbia"
+                                }
+                            >
+                                Saving Earth Magazine - Preserve british
+                                collumbia’s, The impact Report
+                            </Link>
                         </p>
                         <p className="text-[75%] text-right text-neutral-400">
                             Jan 2022
