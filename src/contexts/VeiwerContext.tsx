@@ -1,12 +1,13 @@
 "use client";
 
-import { ViewerContextType } from "@/types";
+import { PageFlip, ViewerContextType } from "@/types";
 import {
     ReactNode,
     createContext,
     useContext,
     useEffect,
     useMemo,
+    useRef,
     useState,
 } from "react";
 
@@ -14,7 +15,11 @@ const ViewerContext = createContext<ViewerContextType>({});
 
 const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
     const [screenS, setScreenS] = useState({ x: 0, y: 0 });
-    const vp = useMemo(() => screenS.x * 0.7, [screenS]);
+    const [isFullS, setIsFullS] = useState(false);
+    const vp = useMemo(
+        () => screenS.x * (isFullS ? 0.9 : 0.7),
+        [screenS, isFullS],
+    );
     // total number of page
     const [numPage, setNumPage] = useState<number>(0);
     // current pages
@@ -24,11 +29,16 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
 
     const [loading, setLoading] = useState(false);
 
+    const flipRef = useRef<{ pageFlip: () => PageFlip }>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
     useEffect(() => {
         const handleResize = () => {
             setLoading(true);
             setScreenS({ x: window.innerWidth, y: window.innerHeight });
-            setTimeout(() => setLoading(false), 2000);
+            setTimeout(() => {
+                setLoading(false);
+            }, 2000);
         };
         handleResize();
 
@@ -36,6 +46,19 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
 
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    useEffect(() => {
+        const handleFullScrenn = () => {
+            setIsFullS(!!document.fullscreenElement);
+        };
+        handleFullScrenn();
+
+        document.addEventListener("fullscreenchange", handleFullScrenn);
+
+        return () =>
+            document.removeEventListener("fullscreenchange", handleFullScrenn);
+    }, []);
+
     return (
         <ViewerContext.Provider
             value={{
@@ -50,6 +73,9 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
                 setLoading,
                 screenS,
                 setScreenS,
+                flipRef,
+                containerRef,
+                isFullS,
             }}
         >
             {children}

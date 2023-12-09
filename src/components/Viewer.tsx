@@ -1,15 +1,17 @@
 "use client";
-import { Document, Page, pdfjs } from "react-pdf";
-import "react-pdf/dist/Page/AnnotationLayer.css";
-import "react-pdf/dist/Page/TextLayer.css";
+import { useViewerContext } from "@/contexts/VeiwerContext";
 import { LoadedPdfHandler } from "@/types";
-import { useEffect, useMemo, useRef, useState } from "react";
-import HTMLFlipBook from "react-pageflip";
+import { useMemo } from "react";
 import {
     IoArrowBackCircleOutline,
     IoArrowForwardCircleOutline,
 } from "react-icons/io5";
-import { useViewerContext } from "@/contexts/VeiwerContext";
+import HTMLFlipBook from "react-pageflip";
+import { Document, Page, pdfjs } from "react-pdf";
+import "react-pdf/dist/Page/AnnotationLayer.css";
+import "react-pdf/dist/Page/TextLayer.css";
+import ButtonCommande from "./ViewerSection/ButtonCommande";
+import Space from "./Space";
 
 // for more details, visit
 // https://www.npmjs.com/package/react-pdf?activeTab=readme
@@ -19,16 +21,16 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 const Viewer = () => {
     const {
         loading,
-        setLoading,
         numPage,
         setNumPage,
-        pageNum,
-        setPageNum,
         ratio,
         setRation,
         vp,
+        flipRef,
+        containerRef,
+        isFullS,
     } = useViewerContext();
-    const [screenS, setScreenS] = useState({ x: 0, y: 0 });
+
     // list pages
     const listPage = useMemo(() => {
         if (numPage == 0) return [];
@@ -41,8 +43,6 @@ const Viewer = () => {
             );
         return tab;
     }, [numPage, vp]);
-    // flip page ref
-    const flipRef = useRef<typeof HTMLFlipBook>(null);
 
     const loadHandler: LoadedPdfHandler = async (doc) => {
         setNumPage(doc.numPages);
@@ -53,25 +53,21 @@ const Viewer = () => {
         setRation(pageWidth / (pageHeight || 1));
     };
 
-    useEffect(() => {
-        const handleResize = () => {
-            setLoading(true);
-            setScreenS({ x: window.innerWidth, y: window.innerHeight });
-            setTimeout(() => setLoading(false), 2000);
-        };
-        handleResize();
-
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, [setLoading]);
-
     return (
         <>
-            <div style={{ width: vp, minHeight: "200px", minWidth: "200px" }}>
+            <div
+                style={{
+                    width: vp,
+                    minHeight: "200px",
+                    minWidth: "200px",
+                    position: "relative",
+                }}
+                ref={containerRef}
+            >
                 <Document
                     file={"/pdf/journal_march_2020.pdf"}
                     onLoadSuccess={loadHandler}
+                    className="mx-auto"
                 >
                     {numPage == 0 && !loading ? (
                         <></>
@@ -79,7 +75,7 @@ const Viewer = () => {
                         <HTMLFlipBook
                             width={vp / 2}
                             height={vp / 2 / (ratio || 1)}
-                            ref={flipRef}
+                            ref={(flip) => (flipRef.current = flip)}
                             autoSize
                             showPageCorners={false}
                             drawShadow
@@ -106,24 +102,27 @@ const Viewer = () => {
                         </HTMLFlipBook>
                     )}
                 </Document>
-
-                <div
-                    style={{
-                        margin: "auto",
-                        width: "fit-content",
-                        padding: "0.5rem",
-                        backgroundColor: "white",
-                    }}
-                ></div>
+                {isFullS ? (
+                    <div>
+                        <Space />
+                        <ButtonCommande />
+                    </div>
+                ) : null}
             </div>
 
-            <button className="absolute top-1/2 -left-12">
-                <span className="text-3xl text-gray-400">
+            <button
+                className="absolute top-1/2 -left-12 hover:bg-white/50 text-gray-400 hover:text-black rounded-full p-2 duration-500"
+                onClick={() => flipRef.current.pageFlip().flipPrev("top")}
+            >
+                <span className="text-3xl ">
                     <IoArrowBackCircleOutline />
                 </span>
             </button>
-            <button className="absolute top-1/2 -right-12">
-                <span className="text-3xl text-gray-400">
+            <button
+                className="absolute top-1/2 -right-12 hover:bg-white/50 text-gray-400 hover:text-black rounded-full p-2 duration-500"
+                onClick={() => flipRef.current.pageFlip().flipNext("top")}
+            >
+                <span className="text-3xl ">
                     <IoArrowForwardCircleOutline />
                 </span>
             </button>

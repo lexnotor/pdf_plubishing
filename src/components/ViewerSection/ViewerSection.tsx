@@ -1,15 +1,10 @@
 import bg_mountain from "@/assets/images/bg_mountain.jpg";
-import { AiOutlineDownload } from "react-icons/ai";
-import {
-    IoArrowBackCircleOutline,
-    IoArrowForwardCircleOutline,
-} from "react-icons/io5";
-import { MdOutlineCloseFullscreen } from "react-icons/md";
 import { ViewerContextProvider } from "@/contexts/VeiwerContext";
-import Viewer from "../Viewer";
-import Space from "../Space";
-import ProgramList from "../ProgramList";
 import Navbar from "../Navbar";
+import ProgramList from "../ProgramList";
+import Space from "../Space";
+import Viewer from "../Viewer";
+import ButtonCommande from "./ButtonCommande";
 
 const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
     return (
@@ -29,54 +24,15 @@ const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
 
                     <Space />
 
-                    <div className="flex gap-8 items-center w-fit rounded-r-full rounded-l-full border mx-auto p-1 bg-white">
-                        <div className="flex gap-4 justify-center items-center ">
-                            <Space size="0" sizeX="0.5rem" />
-                            <button className="flex gap-4">
-                                <span className="text-3xl text-neutral-400">
-                                    <IoArrowBackCircleOutline />
-                                </span>
-                            </button>
-
-                            <ul className="flex items-center gap-0 text-black text-[85%]">
-                                <li className="rounded-full flex justify-center items-center h-8 w-8">
-                                    1
-                                </li>
-                                <li className="rounded-full flex justify-center items-center h-8 w-8">
-                                    ...
-                                </li>
-                                <li className="rounded-full flex justify-center items-center h-8 w-8">
-                                    15
-                                </li>
-                            </ul>
-
-                            <button className="flex gap-4">
-                                <span className="text-3xl">
-                                    <IoArrowForwardCircleOutline />
-                                </span>
-                            </button>
-                        </div>
-
-                        <button className="flex gap-2 items-center font-semibold">
-                            <span className="text-[85%]">Fullscreen</span>
-                            <span className="text-xl rotate-90">
-                                <MdOutlineCloseFullscreen />
-                            </span>
-                        </button>
-
-                        <button className="flex gap-4 items-center justify-center py-3 px-6 text-white bg-primary rounded-r-full rounded-l-full">
-                            <span>Download</span>
-                            <span className="text-xl">
-                                <AiOutlineDownload />
-                            </span>
-                        </button>
+                    <div className="w-fit rounded-r-full rounded-l-full border mx-auto bg-white overflow-hidden">
+                        <ButtonCommande />
                     </div>
                 </div>
             </ViewerContextProvider>
 
             <Space />
 
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-6xl mx-auto" id="our-programs">
                 <h3 className="text-lg font-bold">In the same Program</h3>
                 <Space />
                 <ProgramList />
