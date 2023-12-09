@@ -8,6 +8,8 @@ import { MdOutlineCloseFullscreen } from "react-icons/md";
 import Navbar from "./Navbar";
 import ProgramList from "./ProgramList";
 import Space from "./Space";
+import Viewer from "./Viewer";
+import { ViewerContextProvider } from "@/contexts/VeiwerContext";
 
 const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
     return (
@@ -19,65 +21,58 @@ const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
                 <Navbar />
             </header>
 
-            <div>
-                <div className="-mt-[40rem] mx-auto bg-white/80 w-[50rem] h-[60rem] border p-3 relative">
-                    <button className="absolute top-1/2 -left-12">
-                        <span className="text-3xl text-white">
-                            <IoArrowBackCircleOutline />
-                        </span>
-                    </button>
-                    <button className="absolute top-1/2 -right-12">
-                        <span className="text-3xl text-white">
-                            <IoArrowForwardCircleOutline />
-                        </span>
-                    </button>
-                </div>
+            <ViewerContextProvider>
+                <div>
+                    <div className="-mt-[40rem] mx-auto bg-white/80 w-fit border p-1 relative">
+                        <Viewer />
+                    </div>
 
-                <Space />
+                    <Space />
 
-                <div className="flex gap-8 items-center w-fit rounded-r-full rounded-l-full border mx-auto p-1 bg-white">
-                    <div className="flex gap-4 justify-center items-center ">
-                        <Space size="0" sizeX="0.5rem" />
-                        <button className="flex gap-4">
-                            <span className="text-3xl text-neutral-400">
-                                <IoArrowBackCircleOutline />
+                    <div className="flex gap-8 items-center w-fit rounded-r-full rounded-l-full border mx-auto p-1 bg-white">
+                        <div className="flex gap-4 justify-center items-center ">
+                            <Space size="0" sizeX="0.5rem" />
+                            <button className="flex gap-4">
+                                <span className="text-3xl text-neutral-400">
+                                    <IoArrowBackCircleOutline />
+                                </span>
+                            </button>
+
+                            <ul className="flex items-center gap-0 text-black text-[85%]">
+                                <li className="rounded-full flex justify-center items-center h-8 w-8">
+                                    1
+                                </li>
+                                <li className="rounded-full flex justify-center items-center h-8 w-8">
+                                    ...
+                                </li>
+                                <li className="rounded-full flex justify-center items-center h-8 w-8">
+                                    15
+                                </li>
+                            </ul>
+
+                            <button className="flex gap-4">
+                                <span className="text-3xl">
+                                    <IoArrowForwardCircleOutline />
+                                </span>
+                            </button>
+                        </div>
+
+                        <button className="flex gap-2 items-center font-semibold">
+                            <span className="text-[85%]">Fullscreen</span>
+                            <span className="text-xl rotate-90">
+                                <MdOutlineCloseFullscreen />
                             </span>
                         </button>
 
-                        <ul className="flex items-center gap-0 text-black text-[85%]">
-                            <li className="rounded-full flex justify-center items-center h-8 w-8">
-                                1
-                            </li>
-                            <li className="rounded-full flex justify-center items-center h-8 w-8">
-                                ...
-                            </li>
-                            <li className="rounded-full flex justify-center items-center h-8 w-8">
-                                15
-                            </li>
-                        </ul>
-
-                        <button className="flex gap-4">
-                            <span className="text-3xl">
-                                <IoArrowForwardCircleOutline />
+                        <button className="flex gap-4 items-center justify-center py-3 px-6 text-white bg-primary rounded-r-full rounded-l-full">
+                            <span>Download</span>
+                            <span className="text-xl">
+                                <AiOutlineDownload />
                             </span>
                         </button>
                     </div>
-
-                    <button className="flex gap-2 items-center font-semibold">
-                        <span className="text-[85%]">Fullscreen</span>
-                        <span className="text-xl rotate-90">
-                            <MdOutlineCloseFullscreen />
-                        </span>
-                    </button>
-
-                    <button className="flex gap-4 items-center justify-center py-3 px-6 text-white bg-primary rounded-r-full rounded-l-full">
-                        <span>Download</span>
-                        <span className="text-xl">
-                            <AiOutlineDownload />
-                        </span>
-                    </button>
                 </div>
-            </div>
+            </ViewerContextProvider>
 
             <Space />
 
