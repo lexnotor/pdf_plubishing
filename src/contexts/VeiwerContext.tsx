@@ -47,6 +47,7 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
                 ratio,
                 setRation,
                 loading,
+                setLoading,
                 screenS,
                 setScreenS,
             }}

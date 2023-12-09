@@ -21,4 +21,7 @@ export type ViewerContextType = {
 
     loading?: boolean;
     setLoading?: React.Dispatch<React.SetStateAction<boolean>>;
+
+    screenS?: { x: number; y: number };
+    setScreenS?: React.Dispatch<React.SetStateAction<{ x: number; y: number }>>;
 };

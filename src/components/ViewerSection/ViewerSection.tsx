@@ -5,11 +5,11 @@ import {
     IoArrowForwardCircleOutline,
 } from "react-icons/io5";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
-import Navbar from "./Navbar";
-import ProgramList from "./ProgramList";
-import Space from "./Space";
-import Viewer from "./Viewer";
 import { ViewerContextProvider } from "@/contexts/VeiwerContext";
+import Viewer from "../Viewer";
+import Space from "../Space";
+import ProgramList from "../ProgramList";
+import Navbar from "../Navbar";
 
 const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
     return (
@@ -23,7 +23,7 @@ const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
 
             <ViewerContextProvider>
                 <div>
-                    <div className="-mt-[40rem] mx-auto bg-white/80 w-fit border p-1 relative">
+                    <div className="-mt-[40rem] mx-auto bg-white w-fit border p-1 relative">
                         <Viewer />
                     </div>
 
