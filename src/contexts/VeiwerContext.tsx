@@ -32,6 +32,8 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
     const flipRef = useRef<{ pageFlip: () => PageFlip }>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
+    const [pdfUrl, setPdfUrl] = useState(null);
+
     useEffect(() => {
         const handleResize = () => {
             setLoading(true);
@@ -45,6 +47,10 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
         window.addEventListener("resize", handleResize);
 
         return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    useEffect(() => {
+        setPdfUrl("/pdf/journal_march_2020.pdf");
     }, []);
 
     useEffect(() => {
@@ -76,6 +82,7 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
                 flipRef,
                 containerRef,
                 isFullS,
+                pdfUrl,
             }}
         >
             {children}

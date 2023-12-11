@@ -28,6 +28,8 @@ export type ViewerContextType = {
     setScreenS?: React.Dispatch<React.SetStateAction<{ x: number; y: number }>>;
 
     isFullS?: boolean;
+
+    pdfUrl?: string;
 };
 
 export type PageFlip = {

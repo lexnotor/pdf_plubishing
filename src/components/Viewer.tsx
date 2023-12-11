@@ -29,6 +29,7 @@ const Viewer = () => {
         flipRef,
         containerRef,
         isFullS,
+        pdfUrl,
     } = useViewerContext();
 
     // list pages
@@ -65,7 +66,7 @@ const Viewer = () => {
                 ref={containerRef}
             >
                 <Document
-                    file={"/pdf/journal_march_2020.pdf"}
+                    file={pdfUrl}
                     onLoadSuccess={loadHandler}
                     className="mx-auto"
                 >
@@ -97,6 +98,7 @@ const Viewer = () => {
                             mobileScrollSupport={true}
                             useMouseEvents={true}
                             swipeDistance={0}
+                            key={vp}
                         >
                             {listPage}
                         </HTMLFlipBook>

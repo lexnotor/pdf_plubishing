@@ -9,7 +9,7 @@ import { MdOutlineCloseFullscreen } from "react-icons/md";
 import Space from "../Space";
 
 const ButtonCommande = () => {
-    const { pageNum, numPage, flipRef, containerRef, isFullS } =
+    const { pageNum, numPage, flipRef, containerRef, isFullS, pdfUrl } =
         useViewerContext();
 
     return (
@@ -78,13 +78,16 @@ const ButtonCommande = () => {
                     <MdOutlineCloseFullscreen />
                 </span>
             </button>
-
-            <button className="flex gap-4 items-center justify-center py-3 px-6 text-white bg-primary rounded-r-full rounded-l-full">
+            <a
+                href={pdfUrl}
+                download
+                className="flex gap-4 items-center justify-center py-3 px-6 text-white bg-primary rounded-r-full rounded-l-full"
+            >
                 <span>Download</span>
                 <span className="text-xl">
                     <AiOutlineDownload />
                 </span>
-            </button>
+            </a>
         </div>
     );
 };
