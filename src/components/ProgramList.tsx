@@ -24,7 +24,7 @@ const programs = [
 
 const ProgramList = () => {
     return (
-        <ul className="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-4">
+        <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
             {programs.map((program, index) => (
                 <li key={index} className="bg-white p-2">
                     <figure className="relative">

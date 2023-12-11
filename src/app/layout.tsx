@@ -15,12 +15,14 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <main>{children}</main>
-                <div>
-                    <ContactSection />
+            <body className={inter.className} id="root">
+                <div className="blurred">
+                    <main>{children}</main>
+                    <div>
+                        <ContactSection />
 
-                    <Footer />
+                        <Footer />
+                    </div>
                 </div>
             </body>
         </html>

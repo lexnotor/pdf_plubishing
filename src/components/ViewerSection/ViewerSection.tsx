@@ -13,11 +13,13 @@ const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
                 className="px-10 pt-6 pb-14 min-h-[55rem] max-h-[65rem] bg-cover text-white"
                 style={{ backgroundImage: `url(${bg_mountain.src})` }}
             >
-                <Navbar />
+                <div className="container">
+                    <Navbar />
+                </div>
             </header>
 
             <ViewerContextProvider>
-                <div>
+                <div id="viewer" className="container">
                     <div className="-mt-[40rem] mx-auto bg-white w-fit border p-1 relative">
                         <Viewer />
                     </div>

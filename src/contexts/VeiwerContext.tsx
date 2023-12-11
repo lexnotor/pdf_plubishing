@@ -17,7 +17,7 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
     const [screenS, setScreenS] = useState({ x: 0, y: 0 });
     const [isFullS, setIsFullS] = useState(false);
     const vp = useMemo(
-        () => screenS.x * (isFullS ? 0.9 : 0.7),
+        () => screenS.x * (isFullS ? 0.9 : 0.9),
         [screenS, isFullS],
     );
     // total number of page
@@ -36,8 +36,12 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
 
     useEffect(() => {
         const handleResize = () => {
+            const sizeRef = document.querySelector("#viewer") as HTMLDivElement;
             setLoading(true);
-            setScreenS({ x: window.innerWidth, y: window.innerHeight });
+            setScreenS({
+                x: sizeRef?.offsetWidth ?? 0,
+                y: sizeRef?.offsetHeight ?? 0,
+            });
             setTimeout(() => {
                 setLoading(false);
             }, 2000);

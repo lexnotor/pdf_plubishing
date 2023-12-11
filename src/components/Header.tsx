@@ -8,36 +8,38 @@ import Space from "./Space";
 const Header = () => {
     return (
         <header
-            className="px-10 pt-6 pb-14 flex flex-col gap-8 justify-between text-white min-h-[55rem] max-h-[65rem] bg-cover"
+            className="px-10 pt-6 pb-14 text-white min-h-[55rem] max-h-[65rem] bg-cover"
             style={{ backgroundImage: `url(${bg_mountain.src})` }}
         >
-            <Navbar />
+            <div className="flex flex-col gap-8 justify-between ">
+                <Navbar />
 
-            <Space />
+                <Space />
 
-            <p className="self-center text-5xl font-bold flex flex-col items-center text-center">
-                <span>Uncover enchanting stories and connect</span>
-                <span>with the beauty of the natural world.</span>
-            </p>
+                <p className="self-center text-5xl font-bold flex flex-col items-center text-center">
+                    <span>Uncover enchanting stories and connect</span>
+                    <span>with the beauty of the natural world.</span>
+                </p>
 
-            <figure className="self-center">
-                <Image alt="play icon" src={play_icon} width={150} />
-            </figure>
+                <figure className="self-center">
+                    <Image alt="play icon" src={play_icon} width={150} />
+                </figure>
 
-            <p className="self-center flex flex-col items-center text-center">
-                <span>
-                    Gorillas are beautiful, resilient animals. But poaching and
-                    habitat destruction
-                </span>
-                <span>
-                    have pushed their populations to the brink of extinction in
-                    recent decades
-                </span>
-            </p>
+                <p className="self-center flex flex-col items-center text-center">
+                    <span>
+                        Gorillas are beautiful, resilient animals. But poaching
+                        and habitat destruction
+                    </span>
+                    <span>
+                        have pushed their populations to the brink of extinction
+                        in recent decades
+                    </span>
+                </p>
 
-            <div className="self-center flex gap-6 items-center">
-                <OpacityBtn>Our latest Programmes</OpacityBtn>
-                <OpacityBtn type="secondary">Follow Our Journey</OpacityBtn>
+                <div className="self-center flex gap-6 items-center">
+                    <OpacityBtn>Our latest Programmes</OpacityBtn>
+                    <OpacityBtn type="secondary">Follow Our Journey</OpacityBtn>
+                </div>
             </div>
         </header>
     );

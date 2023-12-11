@@ -58,58 +58,61 @@ const Viewer = () => {
         <>
             <div
                 style={{
-                    width: vp,
+                    width: isFullS ? "auto" : vp,
                     minHeight: "200px",
                     minWidth: "200px",
-                    position: "relative",
+                    padding: isFullS ? `0 calc(100vw-${vp}px)` : "",
                 }}
+                className={`relative  ${isFullS ? "mx-auto" : ""}`}
                 ref={containerRef}
             >
-                <Document
-                    file={pdfUrl}
-                    onLoadSuccess={loadHandler}
-                    className="mx-auto"
-                >
-                    {numPage == 0 && !loading ? (
-                        <></>
-                    ) : (
-                        <HTMLFlipBook
-                            width={vp / 2}
-                            height={vp / 2 / (ratio || 1)}
-                            ref={(flip) => (flipRef.current = flip)}
-                            autoSize
-                            showPageCorners={false}
-                            drawShadow
-                            showCover
-                            style={{}}
-                            className=""
-                            clickEventForward
-                            disableFlipByClick={false}
-                            flippingTime={700}
-                            startPage={0}
-                            size={"fixed"}
-                            minWidth={0}
-                            maxWidth={0}
-                            minHeight={0}
-                            maxHeight={0}
-                            usePortrait
-                            startZIndex={0}
-                            maxShadowOpacity={0}
-                            mobileScrollSupport={true}
-                            useMouseEvents={true}
-                            swipeDistance={0}
-                            key={vp}
-                        >
-                            {listPage}
-                        </HTMLFlipBook>
-                    )}
-                </Document>
-                {isFullS ? (
-                    <div>
-                        <Space />
-                        <ButtonCommande />
-                    </div>
-                ) : null}
+                <div style={{ width: vp, margin: "0 auto" }}>
+                    <Document
+                        file={pdfUrl}
+                        onLoadSuccess={loadHandler}
+                        className="mx-auto"
+                    >
+                        {numPage == 0 && !loading ? (
+                            <></>
+                        ) : (
+                            <HTMLFlipBook
+                                width={vp / 2}
+                                height={vp / 2 / (ratio || 1)}
+                                ref={(flip) => (flipRef.current = flip)}
+                                autoSize
+                                showPageCorners={false}
+                                drawShadow
+                                showCover
+                                style={{}}
+                                className=""
+                                clickEventForward
+                                disableFlipByClick={false}
+                                flippingTime={700}
+                                startPage={0}
+                                size={"fixed"}
+                                minWidth={0}
+                                maxWidth={0}
+                                minHeight={0}
+                                maxHeight={0}
+                                usePortrait
+                                startZIndex={0}
+                                maxShadowOpacity={0}
+                                mobileScrollSupport={true}
+                                useMouseEvents={true}
+                                swipeDistance={0}
+                                key={vp}
+                            >
+                                {listPage}
+                            </HTMLFlipBook>
+                        )}
+                    </Document>
+                    {isFullS ? (
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 temp-transparent opacity-5 hover:opacity-100 duration-500 shadow-xl">
+                            <Space />
+                            <ButtonCommande />
+                        </div>
+                    ) : null}
+                </div>
             </div>
 
             <button
