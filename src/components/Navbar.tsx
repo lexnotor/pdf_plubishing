@@ -30,7 +30,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         src={logo}
                         width={200}
                         height={100}
-                        className="w-auto"
+                        className="w-auto max-h-24"
                         title="Dian Fossey Gorilla Fund Logo"
                     />
                 </a>
@@ -40,14 +40,16 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 <ul className="flex justify-between gap-8 [&>li:hover]:text-primary [&>li]:duration-500 [&>li]:cursor-pointer">
                     <li
                         className={
-                            hash == "" && pathname == "/" ? "text-primary" : ""
+                            hash == "" && pathname == `/${lang}`
+                                ? "text-primary"
+                                : ""
                         }
                     >
                         <a href="/">Home</a>
                     </li>
                     <li
                         className={
-                            hash == "#our-programs" || pathname != "/"
+                            hash == "#our-programs" || pathname != `/${lang}`
                                 ? "text-primary"
                                 : ""
                         }
