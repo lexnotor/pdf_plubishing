@@ -2,7 +2,7 @@ import React, { ComponentProps } from "react";
 import { Document } from "react-pdf";
 
 export type RouteParam = {
-    params: { mag_title: string };
+    params: { mag_title: string; lang: string };
 };
 
 export type LoadedPdfHandler = ComponentProps<typeof Document>["onLoadSuccess"];

@@ -1,7 +1,11 @@
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { shortcut, legal, social } from "./data";
+import { RouteParam } from "@/types";
+import { useTranslation } from "@/app/i18n";
 
-const Footer = () => {
+const Footer = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
+    const { t } = await useTranslation(lang, "footer");
+
     return (
         <footer
             className="flex flex-col bg-primary text-white"
@@ -12,7 +16,9 @@ const Footer = () => {
         >
             <section className="max-w-[1300px] w-full mx-auto px-[6rem] pt-[4rem] grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
                 <article>
-                    <h4 className="font-light text-lg mb-2">Connect with us</h4>
+                    <h4 className="font-light text-lg mb-2">
+                        {t("footer:article-1")}
+                    </h4>
                     <ul className="flex gap-2 text-3xl text-secondary">
                         {social.map((item) => (
                             <li
@@ -31,7 +37,7 @@ const Footer = () => {
                     </ul>
                 </article>
 
-                {shortcut.map((article) => (
+                {shortcut(t).map((article) => (
                     <article key={article?.title}>
                         <h4 className="font-light text-lg mb-2">
                             {article?.title}
@@ -63,7 +69,7 @@ const Footer = () => {
             <section className="max-w-[1300px] w-full mx-auto px-[6rem] pb-[4rem] text-sm flex flex-wrap justify-between items-center">
                 <hr className="basis-full border-secondary/60 my-6" />
                 <ul className="flex justify-between gap-5 font-semibold">
-                    {legal.map((item) => (
+                    {legal(t).map((item) => (
                         <li
                             key={item.link}
                             className="hover:text-secondary duration-500"
@@ -79,9 +85,7 @@ const Footer = () => {
                     ))}
                 </ul>
                 <p>EIN: 52-111 866</p>
-                <p>
-                    © 2023 Dian Fossey Gorilla Fund Inc. All Rights Reserved.
-                </p>
+                <p>{t("footer:copyright")}</p>
             </section>
         </footer>
     );

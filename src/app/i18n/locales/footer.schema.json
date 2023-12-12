@@ -1,0 +1,69 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Tranlation of Footer Section",
+    "properties": {
+        "$schema": true,
+        "article-1": {
+            "$ref": "#/definitions/text"
+        },
+        "article-2": {
+            "type": "object",
+            "properties": {
+                "head": { "$ref": "#/definitions/text" },
+                "link-1": { "$ref": "#/definitions/text" },
+                "link-2": { "$ref": "#/definitions/text" },
+                "link-3": { "$ref": "#/definitions/text" }
+            },
+            "required": ["head", "link-1", "link-2", "link-3"]
+        },
+        "article-3": {
+            "type": "object",
+            "properties": {
+                "head": { "$ref": "#/definitions/text" },
+                "link-1": { "$ref": "#/definitions/text" },
+                "link-2": { "$ref": "#/definitions/text" },
+                "link-3": { "$ref": "#/definitions/text" }
+            },
+            "required": ["head", "link-1", "link-2", "link-3"]
+        },
+        "article-4": {
+            "type": "object",
+            "properties": {
+                "head": { "$ref": "#/definitions/text" },
+                "link-1": { "$ref": "#/definitions/text" },
+                "link-2": { "$ref": "#/definitions/text" },
+                "link-3": { "$ref": "#/definitions/text" }
+            },
+            "required": ["head", "link-1", "link-2", "link-3"]
+        },
+        "terms": {
+            "$ref": "#/definitions/text"
+        },
+        "policy": {
+            "$ref": "#/definitions/text"
+        },
+        "donor-policy": {
+            "$ref": "#/definitions/text"
+        },
+        "copyright": {
+            "$ref": "#/definitions/text"
+        }
+    },
+    "required": [
+        "article-1",
+        "article-2",
+        "article-3",
+        "article-4",
+        "terms",
+        "policy",
+        "donor-policy",
+        "copyright"
+    ],
+    "definitions": {
+        "text": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": false
+}

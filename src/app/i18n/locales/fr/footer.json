@@ -1,0 +1,26 @@
+{
+    "$schema": "../footer.schema.json",
+    "article-1": "Nous contacter",
+    "article-2": {
+        "head": "Nous connaître",
+        "link-1": "Qui sommes-nous",
+        "link-2": "Que faisons nous",
+        "link-3": "Nouvelles"
+    },
+    "article-3": {
+        "head": "Contact",
+        "link-1": "FAQ",
+        "link-2": "Salle de presse",
+        "link-3": "Visitez le campus Ellen"
+    },
+    "article-4": {
+        "head": "Comment donner",
+        "link-1": "Donnation",
+        "link-2": "Adoption de gorille",
+        "link-3": "Boutique"
+    },
+    "copyright": "© 2023 Dian Fossey Gorilla Fund Inc. Tout droit reservé.",
+    "donor-policy": "POLITIQUE DE DONATIONS",
+    "policy": "CONFIDENTIALITÉ",
+    "terms": "CONDITIONS D'UTILISATION"
+}

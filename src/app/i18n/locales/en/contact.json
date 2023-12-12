@@ -1,0 +1,20 @@
+{
+    "$schema": "../contact.schema.json",
+    "title-1": "Mailing Address",
+    "title-2": "Phone Number",
+    "title-3": "Press Contact",
+    "form-title": "Send us a message",
+    "form-p-1": {
+        "text-1": "Please fill out the form below or you can send a direct email to info@gorillafund.org. Be sure to check out our Frequently Asked Questions page first,",
+        "link-1": " by clicking here."
+    },
+    "form-p-2": {
+        "text-1": "If you are contacting us for information regarding a questionable charge on your account please",
+        "link-1": " visit here."
+    },
+    "fname-placeholder": "Firstname",
+    "lname-placeholder": "Lastname",
+    "email-placeholder": "Email Address",
+    "message-placeholder": "Your comment or message",
+    "form-btn": "Send message"
+}

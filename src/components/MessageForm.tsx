@@ -1,20 +1,39 @@
 import React from "react";
 import Space from "./Space";
+import { RouteParam } from "@/types";
+import { useTranslation } from "@/app/i18n";
 
-const MessageForm = () => {
+const MessageForm = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
+    const { t } = await useTranslation(lang, "contact");
+
     return (
         <div>
-            <h2 className="text-4xl font-semibold">Send us a message</h2>
+            <h2 className="text-4xl font-semibold">
+                {t("contact:form-title")}
+            </h2>
             <Space size="0.4rem" />
             <p className="text-sm">
-                Please fill out the form below or you can send a direct email to
-                info@gorillafund.org. Be sure to check out our Frequently Asked
-                Questions page first, by clicking here.
+                <span>{t("contact:form-p-1.text-1")}</span>{" "}
+                <a
+                    href="https://gorillafund.org/who-we-are/frequently-asked-questions-faqs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-secondary font-bold"
+                >
+                    {t("contact:form-p-1.link-1")}
+                </a>
             </p>
             <Space size="0.4rem" />
             <p className="text-sm">
-                If you are contacting us for information regarding a
-                questionable charge on your account please visit here.
+                <span>{t("contact:form-p-2.text-1")}</span>{" "}
+                <a
+                    href="https://gorillafund.org/who-we-are/frequently-asked-questions-faqs/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-secondary font-bold"
+                >
+                    {t("contact:form-p-2.link-1")}
+                </a>
             </p>
 
             <Space size="0.8rem" />
@@ -25,7 +44,7 @@ const MessageForm = () => {
                             htmlFor="fname"
                             className="absolute top-1/2 -translate-y-1/2 text-neutral-500"
                         >
-                            Firstname
+                            {t("contact:fname-placeholder")}
                         </label>
                         <input
                             type="text"
@@ -39,7 +58,7 @@ const MessageForm = () => {
                             htmlFor="lname"
                             className="absolute top-1/2 -translate-y-1/2 text-neutral-500"
                         >
-                            Lastname
+                            {t("contact:lname-placeholder")}
                         </label>
                         <input
                             type="text"
@@ -55,7 +74,7 @@ const MessageForm = () => {
                         htmlFor="fname"
                         className="absolute top-1/2 -translate-y-1/2 text-neutral-500"
                     >
-                        Email Address
+                        {t("contact:email-placeholder")}
                     </label>
                     <input
                         type="text"
@@ -70,7 +89,7 @@ const MessageForm = () => {
                         htmlFor="fname"
                         className="absolute top-2 text-neutral-500"
                     >
-                        Your comment or message
+                        {t("contact:message-placeholder")}
                     </label>
                     <textarea
                         name="fname"
@@ -82,7 +101,7 @@ const MessageForm = () => {
 
                 <div>
                     <button className="bg-secondary text-white py-5 px-11 rounded-r-full rounded-l-full font-semibold">
-                        Send Message
+                        {t("contact:form-btn")}
                     </button>
                 </div>
             </form>

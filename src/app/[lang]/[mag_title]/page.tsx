@@ -9,9 +9,12 @@ const Page = ({ params }: RouteParam) => {
     );
 };
 
-export const generateStaticParams: () => RouteParam["params"][] = () => {
+export const generateStaticParams: () => Partial<
+    RouteParam["params"]
+>[] = () => {
     return [{ mag_title: "saving_earth_magazine_preserve_british_collumbia" }];
 };
+
 export const dynamicParams = false;
 
 export default Page;

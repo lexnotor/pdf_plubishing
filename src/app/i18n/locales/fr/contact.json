@@ -1,0 +1,20 @@
+{
+    "$schema": "../contact.schema.json",
+    "title-1": "Adresse Postale",
+    "title-2": "Téléphone",
+    "title-3": "Contacts Presse",
+    "form-title": "Envoyez nous un message",
+    "form-p-1": {
+        "text-1": "Veuillez remplir le formulaire ci-dessous ou envoyez un courriel direct à info@gorillafund.org. N'oubliez pas de consulter d'abord notre page Foire aux questions en",
+        "link-1": " cliquant ici."
+    },
+    "form-p-2": {
+        "text-1": "Si vous nous contactez pour obtenir des informations concernant un prélèvement douteux sur votre compte, veuillez",
+        "link-1": " visiter ici."
+    },
+    "fname-placeholder": "Prenom",
+    "lname-placeholder": "Post-nom",
+    "email-placeholder": "Addresse Email",
+    "message-placeholder": "Votre message",
+    "form-btn": "Envoyer"
+}

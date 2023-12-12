@@ -1,7 +1,11 @@
 import React from "react";
 import MessageForm from "./MessageForm";
+import { RouteParam } from "@/types";
+import { useTranslation } from "@/app/i18n";
 
-const ContactSection = () => {
+const ContactSection = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
+    const { t } = await useTranslation(lang, "contact");
+
     return (
         <section
             id="contact-us"
@@ -10,7 +14,7 @@ const ContactSection = () => {
             <ul className="w-2/5 bg-primary/5 border border-primary/30 px-8 py-6 rounded-md flex flex-col gap-6">
                 <li>
                     <h4 className="text-[105%] font-semibold border-b-8 border-b-secondary/60 pb-1 mb-4 w-[60%]">
-                        Mailing Address
+                        {t("contact:title-1")}
                     </h4>
                     <p>
                         Dian Fossey Gorilla Fund 800 Cherokee Avenue, S.E.
@@ -20,7 +24,7 @@ const ContactSection = () => {
 
                 <li>
                     <h4 className="text-[105%] font-semibold border-b-8 border-b-secondary/60 pb-1 mb-4 w-[60%]">
-                        Phone Number
+                        {t("contact:title-2")}
                     </h4>
                     <ul>
                         <a href=""></a>
@@ -35,7 +39,7 @@ const ContactSection = () => {
 
                 <li>
                     <h4 className="text-[105%] font-semibold border-b-8 border-b-secondary/60 pb-1 mb-4 w-[60%]">
-                        Press Contact
+                        {t("contact:title-3")}
                     </h4>
                     <ul>
                         <li>Erika Archibald </li>
@@ -52,7 +56,7 @@ const ContactSection = () => {
             </ul>
 
             <div className="w-3/5">
-                <MessageForm />
+                <MessageForm lang={lang} />
             </div>
         </section>
     );

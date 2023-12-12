@@ -1,0 +1,76 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Tranlation of Contact Section",
+    "properties": {
+        "$schema": true,
+        "title-1": {
+            "$ref": "#/definitions/text"
+        },
+        "title-2": {
+            "$ref": "#/definitions/text"
+        },
+        "title-3": {
+            "$ref": "#/definitions/text"
+        },
+        "form-title": {
+            "$ref": "#/definitions/text"
+        },
+        "form-p-1": {
+            "type": "object",
+            "properties": {
+                "text-1": {
+                    "$ref": "#/definitions/text"
+                },
+                "link-1": {
+                    "$ref": "#/definitions/text"
+                }
+            },
+            "required": ["text-1", "link-1"]
+        },
+        "form-p-2": {
+            "type": "object",
+            "properties": {
+                "text-1": {
+                    "$ref": "#/definitions/text"
+                },
+                "link-1": {
+                    "$ref": "#/definitions/text"
+                }
+            }
+        },
+        "fname-placeholder": {
+            "$ref": "#/definitions/text"
+        },
+        "lname-placeholder": {
+            "$ref": "#/definitions/text"
+        },
+        "email-placeholder": {
+            "$ref": "#/definitions/text"
+        },
+        "message-placeholder": {
+            "$ref": "#/definitions/text"
+        },
+        "form-btn": {
+            "$ref": "#/definitions/text"
+        }
+    },
+    "required": [
+        "title-1",
+        "title-2",
+        "title-3",
+        "form-title",
+        "form-p-1",
+        "form-p-2",
+        "form-btn",
+        "fname-placeholder",
+        "lname-placeholder",
+        "email-placeholder"
+    ],
+    "definitions": {
+        "text": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": false
+}
