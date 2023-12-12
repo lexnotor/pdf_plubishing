@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
 const StickyNavBar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -15,13 +15,13 @@ const StickyNavBar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
         handleScroll();
         document.addEventListener("scroll", handleScroll, true);
 
-        return document.removeEventListener("scroll", handleScroll, true);
+        return () => document.removeEventListener("scroll", handleScroll, true);
     }, []);
 
     return (
         <div
             style={{ top: show ? "0px" : "-50vh" }}
-            className="fixed z-30 left-0 right-0 bg-text/40 py-2 text-white backdrop-blur-3xl"
+            className="fixed z-30 left-0 right-0 bg-text/40 py-2 text-white backdrop-blur-3xl duration-500"
         >
             <div className=" container ">
                 <Navbar lang={lang} />
