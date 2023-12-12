@@ -10,9 +10,7 @@ import {
 declare module "i18next" {
     // Extend CustomTypeOptions
     interface CustomTypeOptions {
-        // custom namespace type, if you changed it
-        defaultNS: "ns1";
-        // custom resources type
+        defaultNS: "translation";
         resources: {
             contact: typeof contactSection;
             footer: typeof footerSection;
