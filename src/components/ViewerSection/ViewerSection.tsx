@@ -5,8 +5,11 @@ import ProgramList from "../ProgramList";
 import Space from "../Space";
 import Viewer from "../Viewer";
 import ButtonCommande from "./ButtonCommande";
+import { RouteParam } from "@/types";
 
-const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
+const ViewerSection: (props: Partial<RouteParam["params"]>) => JSX.Element = ({
+    lang,
+}) => {
     return (
         <section className="relative bg-gradient-radial from-primary/20 from-5% to-50% to-white">
             <header
@@ -14,7 +17,7 @@ const ViewerSection: (props: { mag_title: string }) => JSX.Element = () => {
                 style={{ backgroundImage: `url(${bg_mountain.src})` }}
             >
                 <div className="container">
-                    <Navbar />
+                    <Navbar lang={lang} />
                 </div>
             </header>
 

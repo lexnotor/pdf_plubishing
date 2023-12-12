@@ -48,4 +48,13 @@
             opacity: 0.05;
         }
     }
+
+    .cur_locale {
+        content: '\25BC';
+        display: inline-block;
+        color: #000;
+        background-color: #fff;
+        margin-left: -17px;
+        pointer-events: none;
+    }
 }

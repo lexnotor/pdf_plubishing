@@ -6,8 +6,9 @@ import Search from "./Search";
 import LanguageSwitch from "./LanguageSwitch";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { RouteParam } from "@/types";
 
-const Navbar = () => {
+const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const pathname = usePathname();
     const [hash, setHash] = useState("");
 
@@ -78,7 +79,7 @@ const Navbar = () => {
             </div>
 
             <div>
-                <LanguageSwitch />
+                <LanguageSwitch lang={lang} />
             </div>
         </div>
     );

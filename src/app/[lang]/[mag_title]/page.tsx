@@ -4,7 +4,7 @@ import { RouteParam } from "@/types";
 const Page = ({ params }: RouteParam) => {
     return (
         <div>
-            <ViewerSection mag_title={params.mag_title} />
+            <ViewerSection mag_title={params.mag_title} lang={params.lang} />
         </div>
     );
 };

@@ -4,15 +4,16 @@ import Image from "next/image";
 import { OpacityBtn } from "./Button";
 import Navbar from "./Navbar";
 import Space from "./Space";
+import { RouteParam } from "@/types";
 
-const Header = () => {
+const Header = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     return (
         <header
             className="px-10 pt-6 pb-14 text-white min-h-[55rem] max-h-[65rem] bg-cover"
             style={{ backgroundImage: `url(${bg_mountain.src})` }}
         >
             <div className="flex flex-col gap-8 justify-between container">
-                <Navbar />
+                <Navbar lang={lang} />
 
                 <Space />
 
