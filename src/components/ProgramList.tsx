@@ -10,6 +10,7 @@ import open_book from "@/assets/images/book-open.svg";
 import Image from "next/image";
 import Space from "./Space";
 import Link from "next/link";
+import { ProgramListProps } from "@/types";
 
 const programs = [
     gorilla_eating,
@@ -22,7 +23,7 @@ const programs = [
     newspaper,
 ];
 
-const ProgramList = () => {
+const ProgramList: (props: ProgramListProps) => JSX.Element = () => {
     return (
         <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
             {programs.map((program, index) => (

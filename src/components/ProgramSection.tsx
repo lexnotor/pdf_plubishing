@@ -1,10 +1,25 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import ProgramType from "./ProgramType";
 import Space from "./Space";
 import ProgramList from "./ProgramList";
 import ProgramPagination from "./ProgramPagination";
+import { EntryCollection } from "contentful";
+import { MagazineEntry } from "@/types/contentful";
+import { magazineService } from "@/apis/services/magazine.service";
 
 const ProgramSection = () => {
+    const [programs, setPrograms] = useState<
+        EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">[]
+    >([]);
+
+    useEffect(() => {
+        magazineService
+            .getMagazines()
+            .then((data) => setPrograms((old) => [...old, data]));
+    }, []);
+
     return (
         <section
             id="our-programs"
@@ -20,7 +35,7 @@ const ProgramSection = () => {
 
             <Space />
 
-            <ProgramList />
+            <ProgramList data={programs} />
 
             <Space />
 

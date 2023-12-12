@@ -96,4 +96,4 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
 
 const useViewerContext = () => useContext(ViewerContext);
 
-export { useViewerContext, ViewerContextProvider };
+export { ViewerContextProvider, useViewerContext };

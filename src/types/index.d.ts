@@ -1,5 +1,7 @@
+import { EntryCollection } from "contentful";
 import React, { ComponentProps } from "react";
 import { Document } from "react-pdf";
+import { MagazineEntry } from "./contentful";
 
 export type RouteParam = {
     params: { mag_title: string; lang: string };
@@ -61,4 +63,8 @@ export type PageFlip = {
     updateFromImages: (imagesUrl: string[]) => void;
     /**Destructor. Removes Parent HTML Element and all event handlers new on 0.4.0 */
     destroy: () => void;
+};
+
+export type ProgramListProps = {
+    data: EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">[];
 };
