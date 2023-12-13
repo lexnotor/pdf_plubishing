@@ -1,30 +1,27 @@
-import celebrating from "@/assets/images/Fossey Gorilla/celebrating.jpg";
-import good_job from "@/assets/images/Fossey Gorilla/good_job.jpg";
-import gorilla_eating from "@/assets/images/Fossey Gorilla/gorilla_eating.jpg";
-import gorilla_son from "@/assets/images/Fossey Gorilla/gorilla_son.jpg";
-import human_forest from "@/assets/images/Fossey Gorilla/human_forest.jpg";
-import mountain from "@/assets/images/Fossey Gorilla/mountain.jpg";
-import newspaper from "@/assets/images/Fossey Gorilla/newspaper.jpg";
-import people_walking from "@/assets/images/Fossey Gorilla/people_walking.jpg";
 import open_book from "@/assets/images/book-open.svg";
-import Image from "next/image";
-import Space from "./Space";
-import Link from "next/link";
+import gorilla404 from "@/assets/images/gorilla_404.png";
 import { ProgramListProps } from "@/types";
-
-const programs = [
-    gorilla_eating,
-    good_job,
-    human_forest,
-    mountain,
-    people_walking,
-    gorilla_son,
-    celebrating,
-    newspaper,
-];
+import Image from "next/image";
+import Link from "next/link";
+import Space from "./Space";
 
 const ProgramList: (props: ProgramListProps) => JSX.Element = ({ data }) => {
-    if (!data) return <>Aucune actu</>;
+    if (!data || !data.items.length)
+        return (
+            <div className="h-72 flex items-center justify-center">
+                <Image
+                    alt="Saving Earth Magazine - Preserve british collumbia’s, The impact Report"
+                    src={gorilla404}
+                    className="h-full object-contain"
+                    width={400}
+                    height={400}
+                />
+                <p className="text-xl text-center text-black">
+                    Aucun programme
+                    <br /> trouvé
+                </p>
+            </div>
+        );
 
     return (
         <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
@@ -35,7 +32,7 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({ data }) => {
                         <figure className="relative">
                             <Image
                                 alt="Saving Earth Magazine - Preserve british collumbia’s, The impact Report"
-                                src={cover ? `https:${cover}` : programs[0]}
+                                src={cover ? `https:${cover}` : gorilla404}
                                 className="w-full object-cover"
                                 width={300}
                                 height={300}

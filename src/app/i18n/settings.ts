@@ -6,9 +6,9 @@ export const languages = [fallbackLng, "fr"];
 export const defaultNS = "translation";
 
 export const getI18NextOptions: (
-    lng: string,
-    ns: Namespace | Namespace[],
-) => InitOptions = (lng, ns) => {
+    lng?: string,
+    ns?: Namespace | Namespace[],
+) => InitOptions = (lng = fallbackLng, ns = defaultNS) => {
     return {
         supportedLngs: languages,
         fallbackLng,

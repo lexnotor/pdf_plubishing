@@ -1,0 +1,22 @@
+{
+    "$schema": "../header.schema.json",
+    "btn-1": "Programmes recents",
+    "btn-2": "Suivez notre voyage",
+    "p-1": {
+        "text-1": "Découvrir des histoires fascinantes et se connecter",
+        "text-2": "à la beauté du monde naturel"
+    },
+    "p-2": {
+        "text-1": "Les gorilles sont des animaux magnifiques et résistants. Mais le braconnage et la destruction de leur habitat ont",
+        "text-2": "poussé leurs populations au bord de l'extinction au cours des dernières décennies"
+    },
+    "navbar": {
+        "about": "A propos",
+        "contact": "Contacts",
+        "home": "Accueil",
+        "programs": "Nos Programmes"
+    },
+    "search": {
+        "placeholder": "Recherche ..."
+    }
+}

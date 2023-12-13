@@ -1,0 +1,22 @@
+{
+    "$schema": "../header.schema.json",
+    "btn-1": "Our latest programs",
+    "btn-2": "Follow Our Journey",
+    "p-1": {
+        "text-1": "Uncover enchanting stories and connect",
+        "text-2": "with the beauty of the natural world"
+    },
+    "p-2": {
+        "text-1": "Gorillas are beautiful, resilient animals. But poaching and habitat destruction ",
+        "text-2": "have pushed their populations to the brink of extinction in recent decades"
+    },
+    "navbar": {
+        "about": "About Us",
+        "contact": "Contacts",
+        "home": "Home",
+        "programs": "Our Programs"
+    },
+    "search": {
+        "placeholder": "Search ..."
+    }
+}

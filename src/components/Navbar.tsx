@@ -1,16 +1,18 @@
 "use client";
-import Image from "next/image";
 import logo from "@/assets/images/logo_text.png";
-import { HiArrowTopRightOnSquare } from "react-icons/hi2";
-import Search from "./Search";
-import LanguageSwitch from "./LanguageSwitch";
+import { RouteParam } from "@/types";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { RouteParam } from "@/types";
+import { HiArrowTopRightOnSquare } from "react-icons/hi2";
+import LanguageSwitch from "./LanguageSwitch";
+import Search from "./Search";
+import { useTranslation } from "@/app/i18n/client";
 
 const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const pathname = usePathname();
     const [hash, setHash] = useState("");
+    const { t } = useTranslation(lang, "header");
 
     useEffect(() => {
         const handleHash = () => {
@@ -45,7 +47,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                                 : ""
                         }
                     >
-                        <a href="/">Home</a>
+                        <a href="/">{t("header:navbar.home")}</a>
                     </li>
                     <li
                         className={
@@ -54,7 +56,9 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                                 : ""
                         }
                     >
-                        <a href="#our-programs">Our Programs</a>
+                        <a href="#our-programs">
+                            {t("header:navbar.programs")}
+                        </a>
                     </li>
                     <li>
                         <a
@@ -63,7 +67,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                             rel="noopener noreferrer"
                             className="flex gap-1"
                         >
-                            <span>About Us</span>
+                            <span>{t("header:navbar.about")}</span>
                             <span className="text-lg">
                                 <HiArrowTopRightOnSquare />
                             </span>
@@ -71,13 +75,13 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     </li>
 
                     <li className={hash == "#contact-us" ? "text-primary" : ""}>
-                        <a href="#contact-us">Contact</a>
+                        <a href="#contact-us">{t("header:navbar.contact")}</a>
                     </li>
                 </ul>
             </nav>
 
             <div>
-                <Search />
+                <Search lang={lang} />
             </div>
 
             <div>

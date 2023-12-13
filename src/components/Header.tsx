@@ -5,8 +5,11 @@ import { OpacityBtn } from "./Button";
 import Navbar from "./Navbar";
 import Space from "./Space";
 import { RouteParam } from "@/types";
+import { useTranslation } from "@/app/i18n";
 
-const Header = ({ lang }: Pick<RouteParam["params"], "lang">) => {
+const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
+    const { t } = await useTranslation(lang, "header");
+
     return (
         <header
             className="px-10 pt-6 pb-14 text-white min-h-[55rem] max-h-[65rem] bg-cover"
@@ -18,8 +21,8 @@ const Header = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 <Space />
 
                 <p className="self-center text-5xl font-bold flex flex-col items-center text-center">
-                    <span>Uncover enchanting stories and connect</span>
-                    <span>with the beauty of the natural world.</span>
+                    <span>{t("header:p-1.text-1")}</span>
+                    <span>{t("header:p-1.text-2")}</span>
                 </p>
 
                 <figure className="self-center">
@@ -27,19 +30,15 @@ const Header = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 </figure>
 
                 <p className="self-center flex flex-col items-center text-center">
-                    <span>
-                        Gorillas are beautiful, resilient animals. But poaching
-                        and habitat destruction
-                    </span>
-                    <span>
-                        have pushed their populations to the brink of extinction
-                        in recent decades
-                    </span>
+                    <span>{t("header:p-2.text-1")}</span>
+                    <span>{t("header:p-2.text-2")}</span>
                 </p>
 
                 <div className="self-center flex gap-6 items-center">
-                    <OpacityBtn>Our latest Programmes</OpacityBtn>
-                    <OpacityBtn type="secondary">Follow Our Journey</OpacityBtn>
+                    <OpacityBtn>{t("header:btn-1")}</OpacityBtn>
+                    <OpacityBtn type="secondary">
+                        {t("header:btn-2")}
+                    </OpacityBtn>
                 </div>
             </div>
         </header>

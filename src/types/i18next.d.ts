@@ -5,6 +5,7 @@ import {
     contactSection,
     footerSection,
     translation,
+    headerSection,
 } from "@/app/i18n/locales/en";
 
 declare module "i18next" {
@@ -14,6 +15,7 @@ declare module "i18next" {
         resources: {
             contact: typeof contactSection;
             footer: typeof footerSection;
+            header: typeof headerSection;
             translation: typeof translation;
         };
     }

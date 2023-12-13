@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Tranlation of Header Section",
+    "properties": {
+        "$schema": true,
+        "p-1": {
+            "type": "object",
+            "properties": {
+                "text-1": { "$ref": "#/definitions/text" },
+                "text-2": { "$ref": "#/definitions/text" }
+            },
+            "required": ["text-1", "text-2"]
+        },
+        "p-2": {
+            "type": "object",
+            "properties": {
+                "text-1": { "$ref": "#/definitions/text" },
+                "text-2": { "$ref": "#/definitions/text" }
+            },
+            "required": ["text-1", "text-2"]
+        },
+        "btn-1": {
+            "$ref": "#/definitions/text"
+        },
+        "btn-2": {
+            "$ref": "#/definitions/text"
+        },
+        "navbar": {
+            "type": "object",
+            "properties": {
+                "home": { "$ref": "#/definitions/text" },
+                "programs": { "$ref": "#/definitions/text" },
+                "about": { "$ref": "#/definitions/text" },
+                "contact": { "$ref": "#/definitions/text" }
+            },
+            "required": ["home", "programs", "about", "contact"]
+        },
+        "search": {
+            "type": "object",
+            "properties": {
+                "placeholder": { "$ref": "#/definitions/text" }
+            },
+            "required": ["placeholder"]
+        }
+    },
+    "definitions": {
+        "text": {
+            "type": "string"
+        }
+    },
+    "required": ["p-1", "p-2", "btn-1", "btn-2", "navbar", "search"],
+    "additionalProperties": false
+}
