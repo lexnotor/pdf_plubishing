@@ -68,3 +68,8 @@ export type PageFlip = {
 export type ProgramListProps = {
     data: EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">[];
 };
+
+export type ProgramPaginationProps = {
+    total: number;
+    pageSize: number;
+};

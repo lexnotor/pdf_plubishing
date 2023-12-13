@@ -39,7 +39,7 @@ const ProgramSection = () => {
 
             <Space />
 
-            <ProgramPagination />
+            <ProgramPagination pageSize={4} total={programs[0]?.total ?? 0} />
         </section>
     );
 };
