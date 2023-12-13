@@ -2,13 +2,14 @@
 import { languages } from "@/app/i18n/settings";
 import { RouteParam } from "@/types";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { TfiWorld } from "react-icons/tfi";
 
 const LangDrawer = ({ cur, isOpen }: { cur: string; isOpen: boolean }) => {
     const path = usePathname().replace(`/${cur}`, "");
+    const searchParam = useSearchParams();
 
     return (
         <ul
@@ -22,7 +23,10 @@ const LangDrawer = ({ cur, isOpen }: { cur: string; isOpen: boolean }) => {
                         key={item}
                         className="pl-6 py-1 cursor-pointer hover:text-secondary duration-500"
                     >
-                        <Link href={`/${item}/${path}`}>
+                        <Link
+                            scroll={false}
+                            href={`/${item}/${path}?${searchParam.toString()}`}
+                        >
                             {item.toUpperCase()}
                         </Link>
                     </li>

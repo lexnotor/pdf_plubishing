@@ -5,6 +5,13 @@ const nextConfig = {
 
         return config;
     },
+    images: {
+        remotePatterns: [
+            {
+                hostname: "images.ctfassets.net",
+            },
+        ],
+    },
 };
 
 module.exports = nextConfig;

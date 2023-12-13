@@ -1,7 +1,7 @@
 import { EntryCollection } from "contentful";
 import React, { ComponentProps } from "react";
 import { Document } from "react-pdf";
-import { MagazineEntry } from "./contentful";
+import { CategoryEntry, MagazineEntry } from "./contentful";
 
 export type RouteParam = {
     params: { mag_title: string; lang: string };
@@ -66,7 +66,11 @@ export type PageFlip = {
 };
 
 export type ProgramListProps = {
-    data: EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">[];
+    data: EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
+};
+
+export type ProgramTypeProps = {
+    data: EntryCollection<CategoryEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
 };
 
 export type ProgramPaginationProps = {
