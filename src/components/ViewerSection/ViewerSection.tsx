@@ -40,7 +40,7 @@ const ViewerSection: (props: Partial<RouteParam["params"]>) => JSX.Element = ({
             <div className="max-w-6xl mx-auto" id="our-programs">
                 <h3 className="text-lg font-bold">In the same Program</h3>
                 <Space />
-                <ProgramList data={[]} />
+                <ProgramList data={null} />
             </div>
         </section>
     );
