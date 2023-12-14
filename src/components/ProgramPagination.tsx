@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "@/app/i18n/client";
 import { ProgramPaginationProps } from "@/types";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
@@ -11,7 +12,10 @@ import {
 const ProgramPagination: (props: ProgramPaginationProps) => JSX.Element = ({
     pageSize,
     total,
+    lang,
 }) => {
+    const { t } = useTranslation(lang, "program");
+
     const searchParam = useSearchParams();
     const pathname = usePathname();
 
@@ -27,16 +31,16 @@ const ProgramPagination: (props: ProgramPaginationProps) => JSX.Element = ({
         })(),
     ];
 
-    return numPage >= 1 ? (
+    return numPage > 1 ? (
         <div className="flex gap-4 justify-center items-center">
             <button
-                className="flex gap-4 disabled:text-neutral-400"
+                className="flex gap-4 disabled:text-neutral-400 disabled:cursor-not-allowed duration-500"
                 disabled={currentPage == 1}
             >
                 <span className="text-2xl">
                     <IoArrowBackCircleOutline />
                 </span>
-                <span>Previous</span>
+                <span>{t("program:previous")}</span>
             </button>
 
             <ul className="flex gap-0 text-black text-[85%] font-bold">
@@ -114,10 +118,10 @@ const ProgramPagination: (props: ProgramPaginationProps) => JSX.Element = ({
             </ul>
 
             <button
-                className="flex gap-4 disabled:text-neutral-400"
+                className="flex gap-4 disabled:text-neutral-400 disabled:cursor-not-allowed duration-500"
                 disabled={Math.ceil(total / pageSize) <= currentPage}
             >
-                <span className="font-bold">Next</span>
+                <span>{t("program:next")}</span>
                 <span className="text-2xl">
                     <IoArrowForwardCircleOutline />
                 </span>

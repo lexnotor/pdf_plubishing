@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import Space from "./Space";
 
-const ProgramList: (props: ProgramListProps) => JSX.Element = ({ data }) => {
+const ProgramList: (props: ProgramListProps) => JSX.Element = ({
+    data,
+    lang,
+    i18nT,
+}) => {
     if (!data || !data.items.length)
         return (
             <div className="h-72 flex items-center justify-center">
@@ -17,8 +21,7 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({ data }) => {
                     height={400}
                 />
                 <p className="text-xl text-center text-black">
-                    Aucun programme
-                    <br /> trouvé
+                    {i18nT("program:none-found")}
                 </p>
             </div>
         );
@@ -44,16 +47,14 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({ data }) => {
                         <Space size="0.2rem" />
                         <div>
                             <p className="text-[75%] text-primary">
-                                Pistage de gorille
+                                {program?.fields?.category?.fields?.title}
                             </p>
                             <p className="text-[85%] font-medium">
-                                <Link
-                                    href={
-                                        "saving_earth_magazine_preserve_british_collumbia"
-                                    }
-                                >
-                                    Saving Earth Magazine - Preserve british
-                                    collumbia’s, The impact Report
+                                <Link href={`${lang}/${program.sys?.id}`}>
+                                    {program?.fields?.title?.slice(0, 70)}
+                                    {program?.fields?.title?.length > 70
+                                        ? "..."
+                                        : null}
                                 </Link>
                             </p>
                             <p className="text-[75%] text-right text-neutral-400">

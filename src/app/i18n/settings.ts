@@ -2,7 +2,7 @@ import { Namespace } from "i18next";
 import { InitOptions } from "i18next";
 
 export const fallbackLng = "en";
-export const languages = [fallbackLng, "fr"];
+export const languages = [fallbackLng, "fr"] as const;
 export const defaultNS = "translation";
 
 export const getI18NextOptions: (

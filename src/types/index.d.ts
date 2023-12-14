@@ -1,10 +1,11 @@
-import { EntryCollection } from "contentful";
+import { Entry, EntryCollection } from "contentful";
 import React, { ComponentProps } from "react";
 import { Document } from "react-pdf";
-import { CategoryEntry, MagazineEntry } from "./contentful";
+import { CategoryEntry, ContenfulLocal, MagazineEntry } from "./contentful";
+import { Namespace, TFunction } from "i18next";
 
 export type RouteParam = {
-    params: { mag_title: string; lang: string };
+    params: { mag_title: string; lang: ContenfulLocal };
 };
 
 export type LoadedPdfHandler = ComponentProps<typeof Document>["onLoadSuccess"];
@@ -65,15 +66,25 @@ export type PageFlip = {
     destroy: () => void;
 };
 
-export type ProgramListProps = {
+export type ProgramListProps = Pick<RouteParam["params"], "lang"> & {
     data: EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
+    i18nT?: TFunction<Namespace>;
 };
 
-export type ProgramTypeProps = {
+export type ProgramTypeProps = Pick<RouteParam["params"], "lang"> & {
     data: EntryCollection<CategoryEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
 };
 
-export type ProgramPaginationProps = {
+export type ViewerSectionProps = RouteParam["params"] & {
+    data: Entry<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
+    related?: EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
+};
+
+export type ViewerContextProviderProps = React.PropsWithChildren<{
+    data: Entry<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
+}>;
+
+export type ProgramPaginationProps = Pick<RouteParam["params"], "lang"> & {
     total: number;
     pageSize: number;
 };

@@ -4,8 +4,10 @@ import "i18next";
 import {
     contactSection,
     footerSection,
-    translation,
     headerSection,
+    journeySection,
+    programSection,
+    translation,
 } from "@/app/i18n/locales/en";
 
 declare module "i18next" {
@@ -16,6 +18,8 @@ declare module "i18next" {
             contact: typeof contactSection;
             footer: typeof footerSection;
             header: typeof headerSection;
+            journey: typeof journeySection;
+            program: typeof programSection;
             translation: typeof translation;
         };
     }

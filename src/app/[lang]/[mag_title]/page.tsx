@@ -1,26 +1,42 @@
 import { magazineService } from "@/apis/services/magazine.service";
 import ViewerSection from "@/components/ViewerSection";
 import { RouteParam } from "@/types";
+import { notFound } from "next/navigation";
 
-const Page = ({ params }: RouteParam) => {
+const Page = async ({ params }: RouteParam) => {
+    const mag = await magazineService
+        .getOneMagazine(params.mag_title, params.lang)
+        .catch(() => notFound());
+
+    const related = await magazineService.getMagazines(
+        {
+            limit: 4,
+            "fields.category.sys.id": mag?.fields?.category?.sys?.id,
+            "sys.id[ne]": mag?.sys?.id,
+        },
+        params.lang,
+    );
+
     return (
         <div>
-            <ViewerSection mag_title={params.mag_title} lang={params.lang} />
+            <ViewerSection
+                mag_title={params.mag_title}
+                lang={params.lang}
+                data={mag}
+                related={related}
+            />
         </div>
     );
 };
 
-export const generateStaticParams: () => Promise<
-    Pick<RouteParam["params"], "mag_title">[]
-> = async () => {
-    const mags = await magazineService.getMagazines();
+export const generateStaticParams: (
+    props: RouteParam["params"],
+) => Promise<Pick<RouteParam["params"], "mag_title">[]> = async ({ lang }) => {
+    const mags = await magazineService.getMagazines({}, lang);
 
-    return [
-        { mag_title: "saving_earth_magazine_preserve_british_collumbia" },
-        ...mags.items.map((mag) => ({ mag_title: mag.sys.id })),
-    ];
+    return mags.items.map((mag) => ({ mag_title: mag.sys.id }));
 };
 
-export const dynamicParams = false;
+export const dynamicParams = true;
 
 export default Page;

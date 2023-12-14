@@ -1,3 +1,4 @@
+import type { languages } from "@/app/i18n/settings";
 import { EntryFieldTypes } from "contentful";
 
 export type CategoryEntry = {
@@ -20,3 +21,5 @@ export type MagazineEntry = {
         category: EntryFieldTypes.EntryLink<CategoryEntry>;
     };
 };
+
+export type ContenfulLocal = (typeof languages)[number];

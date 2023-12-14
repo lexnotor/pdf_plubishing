@@ -26,7 +26,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     return (
         <div className="flex justify-between items-center">
             <figure>
-                <a href="/">
+                <a href={`/${lang}/`}>
                     <Image
                         alt="dian fossey gorilla fund"
                         src={logo}
@@ -47,7 +47,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                                 : ""
                         }
                     >
-                        <a href="/">{t("header:navbar.home")}</a>
+                        <a href={`/${lang}/`}>{t("header:navbar.home")}</a>
                     </li>
                     <li
                         className={

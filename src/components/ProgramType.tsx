@@ -7,8 +7,14 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { IoArrowDownCircleOutline } from "react-icons/io5";
 import Space from "./Space";
+import { useTranslation } from "@/app/i18n/client";
 
-const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({ data }) => {
+const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({
+    data,
+    lang,
+}) => {
+    const { t } = useTranslation(lang, "program");
+
     const searchParam = useSearchParams();
     const pathname = usePathname();
     const router = useRouter();
@@ -32,7 +38,7 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({ data }) => {
         query.set("main_type", main[0]?.sys?.id);
         query.delete("sub_type");
         query.set("page", "1");
-        router.push(`${pathname}?${query.toString()}`);
+        router.push(`${pathname}?${query.toString()}`, { scroll: false });
     }
 
     useEffect(() => {
@@ -49,6 +55,7 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({ data }) => {
         setMain(temp_main);
         setSub(temp_sub);
     }, [data]);
+
     return (
         <div className="w-full">
             <ul className="flex flex-wrap gap-4 w-full">
@@ -98,6 +105,7 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({ data }) => {
                             )?.fields?.title
                         }
                     </span>
+
                     <li
                         className={`${
                             !currentType.sub
@@ -118,9 +126,10 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({ data }) => {
                             className="px-7 py-2"
                             scroll={false}
                         >
-                            Tout
+                            {t("program:all")}
                         </Link>
                     </li>
+
                     {sub
                         .filter(
                             (type) =>

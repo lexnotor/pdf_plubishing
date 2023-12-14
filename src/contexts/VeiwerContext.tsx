@@ -1,8 +1,11 @@
 "use client";
 
-import { PageFlip, ViewerContextType } from "@/types";
 import {
-    ReactNode,
+    PageFlip,
+    ViewerContextProviderProps,
+    ViewerContextType,
+} from "@/types";
+import {
     createContext,
     useContext,
     useEffect,
@@ -13,7 +16,10 @@ import {
 
 const ViewerContext = createContext<ViewerContextType>({});
 
-const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
+const ViewerContextProvider = ({
+    children,
+    data,
+}: ViewerContextProviderProps) => {
     const [screenS, setScreenS] = useState({ x: 0, y: 0 });
     const [isFullS, setIsFullS] = useState(false);
     const vp = useMemo(
@@ -54,8 +60,11 @@ const ViewerContextProvider = ({ children }: { children: ReactNode }) => {
     }, []);
 
     useEffect(() => {
-        setPdfUrl("/pdf/journal_march_2020.pdf");
-    }, []);
+        if (data) {
+            const url = data?.fields?.document?.fields?.file?.url;
+            setPdfUrl(`https://${url}`);
+        }
+    }, [data]);
 
     useEffect(() => {
         const handleFullScrenn = () => {

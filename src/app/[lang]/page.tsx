@@ -8,9 +8,9 @@ const Page = ({ params: { lang } }: RouteParam) => {
         <div>
             <Header lang={lang} />
 
-            <ProgramSection />
+            <ProgramSection lang={lang} />
 
-            <JourneySection />
+            <JourneySection lang={lang} />
         </div>
     );
 };

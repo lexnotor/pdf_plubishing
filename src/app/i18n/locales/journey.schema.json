@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Tranlation of Journey Section",
+    "properties": {
+        "$schema": true,
+        "title-1": {
+            "$ref": "#/definitions/text"
+        },
+        "p-1": {
+            "type": "object",
+            "properties": {
+                "text-1": {
+                    "$ref": "#/definitions/text"
+                },
+                "link-1": {
+                    "$ref": "#/definitions/text"
+                },
+                "text-2": {
+                    "$ref": "#/definitions/text"
+                }
+            },
+            "required": ["text-1", "link-1", "text-2"]
+        }
+    },
+    "required": ["title-1", "p-1"],
+    "definitions": {
+        "text": {
+            "type": "string"
+        }
+    },
+    "additionalProperties": false
+}

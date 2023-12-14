@@ -1,0 +1,8 @@
+{
+    "$schema": "../program.schema.json",
+    "all": "All",
+    "none-found": "No Program Here",
+    "our-programs": "Our Programs",
+    "next": "Next",
+    "previous": "Previous"
+}
