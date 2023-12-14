@@ -12,7 +12,7 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({
 }) => {
     if (!data || !data.items.length)
         return (
-            <div className="h-72 flex items-center justify-center">
+            <div className="h-72 flex items-center justify-center opacity-40 animate-pulse">
                 <Image
                     alt="Saving Earth Magazine - Preserve british collumbia’s, The impact Report"
                     src={gorilla404}

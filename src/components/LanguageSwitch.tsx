@@ -14,14 +14,14 @@ const LangDrawer = ({ cur, isOpen }: { cur: string; isOpen: boolean }) => {
     return (
         <ul
             style={{ height: isOpen ? "auto" : "0px" }}
-            className="absolute left-0 right-0 top-6  bg-white text-text font-bold rounded-md overflow-hidden duration-500 transition-all"
+            className="absolute left-0 right-0 top-10 text-text font-bold rounded-md overflow-hidden duration-500 transition-all"
         >
             {languages
                 .filter((item) => item != cur)
                 .map((item) => (
                     <li
                         key={item}
-                        className="pl-6 py-1 cursor-pointer hover:text-secondary duration-500"
+                        className="pl-9 py-1 cursor-pointer text-white bg-primary/50 hover:text-secondary duration-500  rounded-r-full rounded-l-full"
                     >
                         <Link
                             scroll={false}
@@ -48,16 +48,19 @@ const LanguageSwitch = ({ lang }: Pick<RouteParam["params"], "lang">) => {
 
     return (
         <div
-            className="flex gap-2 items-center relative"
+            className="relative cursor-pointer"
             onClick={() => setIsOpen((o) => !o)}
         >
-            <span>
-                <TfiWorld />
-            </span>
-            <span>{(lang ?? languages[0]).toUpperCase()}</span>
-            <span>
-                <FaChevronDown />
-            </span>
+            <div className="flex gap-2 items-center  bg-primary/25 rounded-r-full rounded-l-full py-1 px-3 duration-500">
+                <span>
+                    <TfiWorld />
+                </span>
+                <span>{(lang ?? languages[0]).toUpperCase()}</span>
+                <span>
+                    <FaChevronDown />
+                </span>
+            </div>
+
             <LangDrawer cur={lang} isOpen={isOpen} />
         </div>
     );
