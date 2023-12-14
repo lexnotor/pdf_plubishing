@@ -14,7 +14,7 @@ const Footer = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     " linear-gradient(to top, #0000004f, #0000004f)",
             }}
         >
-            <section className="max-w-[1300px] w-full mx-auto px-[6rem] pt-[4rem] grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+            <section className="max-w-[1300px] w-full mx-auto px-[2rem] lg:px-[6rem] pt-[4rem] gap-y-8 grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
                 <article>
                     <h4 className="font-light text-lg mb-2">
                         {t("footer:article-1")}
@@ -66,7 +66,7 @@ const Footer = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 ))}
             </section>
 
-            <section className="max-w-[1300px] w-full mx-auto px-[6rem] pb-[4rem] text-sm flex flex-wrap justify-between items-center">
+            <section className="max-w-[1300px] w-full mx-auto px-[2rem] lg:px-[6rem] pb-[4rem] text-sm flex gap-y-4 flex-wrap justify-between items-center">
                 <hr className="basis-full border-secondary/60 my-6" />
                 <ul className="flex justify-between gap-5 font-semibold">
                     {legal(t).map((item) => (

@@ -9,9 +9,9 @@ const ContactSection = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
     return (
         <section
             id="contact-us"
-            className="max-w-[1300px] mx-auto px-[6rem] py-[4rem] flex gap-8 text-black"
+            className="max-w-[1300px] mx-auto px-[2rem] lg:px-[6rem] py-[4rem] flex max-md:flex-col gap-8 text-black"
         >
-            <ul className="w-2/5 bg-primary/5 border border-primary/30 px-8 py-6 rounded-md flex flex-col gap-6">
+            <ul className="md:w-2/5 bg-primary/5 border border-primary/30 px-8 py-6 rounded-md flex flex-col gap-6">
                 <li>
                     <h4 className="text-[105%] font-semibold border-b-8 border-b-secondary/60 pb-1 mb-4 w-[60%]">
                         {t("contact:title-1")}
@@ -55,7 +55,7 @@ const ContactSection = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 </li>
             </ul>
 
-            <div className="w-3/5">
+            <div className="md:w-3/5">
                 <MessageForm lang={lang} />
             </div>
         </section>

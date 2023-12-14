@@ -20,8 +20,8 @@ const StickyNavBar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
 
     return (
         <div
-            style={{ top: show ? "0px" : "-50vh" }}
-            className="fixed z-30 left-0 right-0 bg-text/40 py-2 text-white backdrop-blur-3xl duration-500"
+            style={{ top: show ? "0px" : "-100vh" }}
+            className="px-4 fixed z-30 left-0 right-0 bg-text/40 py-2 text-white backdrop-blur-3xl duration-500"
         >
             <div className=" container ">
                 <Navbar lang={lang} />

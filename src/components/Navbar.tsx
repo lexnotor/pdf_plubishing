@@ -8,11 +8,14 @@ import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import LanguageSwitch from "./LanguageSwitch";
 import Search from "./Search";
 import { useTranslation } from "@/app/i18n/client";
+import { FiMenu } from "react-icons/fi";
+import { IoClose } from "react-icons/io5";
 
 const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const pathname = usePathname();
     const [hash, setHash] = useState("");
     const { t } = useTranslation(lang, "header");
+    const [drawerOpen, setDrawerOpen] = useState(false);
 
     useEffect(() => {
         const handleHash = () => {
@@ -25,7 +28,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
 
     return (
         <div className="flex justify-between items-center">
-            <figure>
+            <figure className="max-lg:order-1">
                 <a href={`/${lang}/`}>
                     <Image
                         alt="dian fossey gorilla fund"
@@ -38,8 +41,36 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 </a>
             </figure>
 
-            <nav>
-                <ul className="flex justify-between gap-8 [&>li:hover]:text-primary [&>li]:duration-500 [&>li]:cursor-pointer">
+            <nav className="max-lg:order-3">
+                <span
+                    className="lg:hidden text-2xl"
+                    onClick={() => setDrawerOpen(true)}
+                >
+                    <FiMenu />
+                </span>
+
+                <ul
+                    style={{ right: drawerOpen ? "0px" : "200vw" }}
+                    className="duration-500 max-lg:fixed z-[60] top-0 bg-no-repeat max-lg:bg-primary/20 max-lg:h-screen max-lg:p-8 max-lg:w-screen max-lg:backdrop-blur-md flex max-lg:flex-col lg:justify-between gap-8 [&>li:hover]:text-primary [&>li]:duration-500 [&>li]:cursor-pointer"
+                >
+                    <figure className="lg:hidden self-start">
+                        <a href={`/${lang}/`}>
+                            <Image
+                                alt="dian fossey gorilla fund"
+                                src={logo}
+                                width={300}
+                                height={150}
+                                className="w-auto max-h-36"
+                                title="Dian Fossey Gorilla Fund Logo"
+                            />
+                        </a>
+                    </figure>
+                    <span
+                        className="lg:hidden text-3xl absolute right-12"
+                        onClick={() => setDrawerOpen(false)}
+                    >
+                        <IoClose />
+                    </span>
                     <li
                         className={
                             hash == "" && pathname == `/${lang}`
@@ -49,6 +80,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     >
                         <a href={`/${lang}/`}>{t("header:navbar.home")}</a>
                     </li>
+
                     <li
                         className={
                             hash == "#our-programs" || pathname != `/${lang}`
@@ -60,6 +92,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                             {t("header:navbar.programs")}
                         </a>
                     </li>
+
                     <li>
                         <a
                             href="https://gorillafund.org/who-we-are/"
@@ -77,14 +110,24 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     <li className={hash == "#contact-us" ? "text-primary" : ""}>
                         <a href="#contact-us">{t("header:navbar.contact")}</a>
                     </li>
+
+                    <li className="lg:hidden absolute bottom-24 right-10">
+                        <Suspense
+                            fallback={
+                                <div className="border-t-2 border-t-secondary rounded-full animate-spin w-4 h-4" />
+                            }
+                        >
+                            <LanguageSwitch lang={lang} />
+                        </Suspense>
+                    </li>
                 </ul>
             </nav>
 
-            <div>
+            <div className="max-lg:order-2">
                 <Search lang={lang} />
             </div>
 
-            <div>
+            <div className="max-lg:order-4 max-lg:hidden">
                 <Suspense
                     fallback={
                         <div className="border-t-2 border-t-secondary rounded-full animate-spin w-4 h-4" />

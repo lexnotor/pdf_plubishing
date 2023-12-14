@@ -21,6 +21,7 @@ const ButtonCommande = () => {
     } = useViewerContext();
 
     const marginBottom = useMemo(() => {
+        if (isFullS) return "0vh";
         if (typeof document == "undefined") return "20vh";
         const viewerNode = document.querySelector("#viewer")
             ?.firstChild as HTMLDivElement;
@@ -35,7 +36,7 @@ const ButtonCommande = () => {
             return val < 0 ? "0px" : val + "px";
         }
         return "20vh";
-    }, [loading]);
+    }, [loading, isFullS]);
 
     return (
         <div

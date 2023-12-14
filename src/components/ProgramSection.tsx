@@ -80,7 +80,7 @@ const ProgramSection: (
     return (
         <section
             id="our-programs"
-            className="px-[6rem] py-[4rem] text bg-gradient-radial from-primary/20 from-5% to-50% to-white container"
+            className="px-[2rem] lg:px-[6rem] py-[4rem] text bg-gradient-radial from-primary/20 from-5% to-50% to-white container"
         >
             <h2 className="text-2xl font-bold" title="Nos Programmes">
                 {t("program:our-programs")}

@@ -12,7 +12,7 @@ const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
 
     return (
         <header
-            className="px-10 pt-6 pb-14 text-white min-h-[55rem] max-h-[65rem] bg-cover"
+            className="px-4 xl:px-10 pt-6 pb-14 text-white min-h-[55rem] max-h-[65rem] bg-cover"
             style={{ backgroundImage: `url(${bg_mountain.src})` }}
         >
             <div className="flex flex-col gap-8 justify-between container">
