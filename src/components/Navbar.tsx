@@ -3,7 +3,7 @@ import logo from "@/assets/images/logo_text.png";
 import { RouteParam } from "@/types";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import LanguageSwitch from "./LanguageSwitch";
 import Search from "./Search";
@@ -85,7 +85,13 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
             </div>
 
             <div>
-                <LanguageSwitch lang={lang} />
+                <Suspense
+                    fallback={
+                        <div className="border-t-2 border-t-secondary rounded-full animate-spin w-4 h-4" />
+                    }
+                >
+                    <LanguageSwitch lang={lang} />
+                </Suspense>
             </div>
         </div>
     );

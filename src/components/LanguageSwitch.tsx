@@ -39,6 +39,7 @@ const LanguageSwitch = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
+        if (typeof document == "undefined") return;
         const handleClose = () => {
             setIsOpen(false);
         };

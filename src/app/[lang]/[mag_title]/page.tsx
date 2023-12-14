@@ -30,7 +30,7 @@ const Page = async ({ params }: RouteParam) => {
 };
 
 export const generateStaticParams: (
-    props: RouteParam["params"],
+    props: any,
 ) => Promise<Pick<RouteParam["params"], "mag_title">[]> = async ({ lang }) => {
     const mags = await magazineService.getMagazines({}, lang);
 

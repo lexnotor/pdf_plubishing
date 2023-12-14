@@ -7,6 +7,7 @@ const StickyNavBar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const [show, setShow] = useState(false);
 
     useEffect(() => {
+        if (typeof document == "undefined") return;
         const handleScroll = () => {
             if (window.scrollY > 300) setShow(true);
             else setShow(false);

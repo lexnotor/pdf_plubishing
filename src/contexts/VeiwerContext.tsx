@@ -41,6 +41,7 @@ const ViewerContextProvider = ({
     const [pdfUrl, setPdfUrl] = useState(null);
 
     useEffect(() => {
+        if (typeof document == "undefined") return;
         const handleResize = () => {
             const sizeRef = document.querySelector("#viewer") as HTMLDivElement;
             setLoading(true);
@@ -67,6 +68,7 @@ const ViewerContextProvider = ({
     }, [data]);
 
     useEffect(() => {
+        if (!document) return;
         const handleFullScrenn = () => {
             setIsFullS(!!document.fullscreenElement);
         };
