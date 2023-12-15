@@ -10,6 +10,9 @@ import StickyNavBar from "@/components/StickyNavBar";
 export const metadata: Metadata = {
     title: "Dian Fossey Gorilla Fund",
     description: "Helping People | Saving Gorillas",
+    verification: {
+        google: "hDu4cCDxXZzVMcHtqb9iEiUzufoXI3MorVBPDQcEbm0",
+    },
 };
 
 export const generateStaticParams: () => Partial<
