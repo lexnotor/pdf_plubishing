@@ -10,6 +10,7 @@ const JourneySection = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const { t } = await useTranslation(lang, "journey");
     return (
         <div
+            id="our-journey"
             className="px-[2rem] lg:px-[6rem] py-[4rem] text-white bg-cover bg-center aspect-[5/2] flex flex-col"
             style={{
                 backgroundImage: ` linear-gradient(to top, #00000079, #00000079),url(${gorilla_photo.src})`,

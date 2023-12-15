@@ -34,15 +34,17 @@ const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     />
                 </figure>
 
-                <p className="self-center sm:flex flex-col items-center text-center">
-                    <span>{t("header:p-2.text-1")}</span>
+                <p className="self-center md:flex flex-col items-center text-center">
+                    <span>{t("header:p-2.text-1")}</span>{" "}
                     <span>{t("header:p-2.text-2")}</span>
                 </p>
 
                 <div className="max-sm:px-4 sm:self-center flex max-sm:flex-col gap-6 sm:items-center">
-                    <OpacityBtn>{t("header:btn-1")}</OpacityBtn>
+                    <OpacityBtn>
+                        <a href="#our-programs">{t("header:btn-1")}</a>{" "}
+                    </OpacityBtn>
                     <OpacityBtn type="secondary">
-                        {t("header:btn-2")}
+                        <a href="#our-journey">{t("header:btn-2")}</a>
                     </OpacityBtn>
                 </div>
             </div>

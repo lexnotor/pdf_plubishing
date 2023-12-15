@@ -21,7 +21,7 @@ const OpacityBtn = ({
                     type == "primary" ? "bg-primary" : "bg-secondary"
                 } absolute top-0 bottom-0 right-0 left-0 z-0`}
             ></span>
-            {children}
+            <span className="relative z-10">{children}</span>
         </button>
     );
 };

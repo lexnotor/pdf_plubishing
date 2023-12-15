@@ -39,7 +39,10 @@ const ViewerSection = async ({ lang, data, related }: ViewerSectionProps) => {
 
             <Space />
 
-            <div className="max-w-6xl mx-auto" id="our-programs">
+            <div
+                className="container max-w-6xl mx-auto max-sm:px-4"
+                id="our-programs"
+            >
                 <h3 className="text-lg font-bold">In the same Program</h3>
                 <Space />
                 <ProgramList data={related} lang={lang} i18nT={t} />
