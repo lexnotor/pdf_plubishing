@@ -13,7 +13,7 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({
 }) => {
     if (!data || !data.items.length)
         return (
-            <div className="h-72 flex items-center justify-center opacity-40 animate-pulse">
+            <div className="h-72 flex max-sm:flex-col-reverse max-sm:gap-4 items-center justify-center opacity-40 animate-pulse">
                 <Image
                     alt="Saving Earth Magazine - Preserve british collumbia’s, The impact Report"
                     src={gorilla404}
@@ -21,7 +21,7 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({
                     width={400}
                     height={400}
                 />
-                <p className="text-xl text-center text-black">
+                <p className="text-xl text-center text-black max-sm:pt-8">
                     {i18nT("program:none-found")}
                 </p>
             </div>
