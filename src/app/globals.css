@@ -39,6 +39,12 @@
         animation: 2s ease-in-out opaque;
     }
 
+    @media screen and (max-width:640px) {
+        .temp-transparent {
+            animation: none;
+        }
+    }
+
     @keyframes opaque {
         0% {
             opacity: 1;

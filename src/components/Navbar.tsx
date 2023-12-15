@@ -17,6 +17,9 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const [hash, setHash] = useState("");
     const { t } = useTranslation(lang, "header");
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const closeDrawer = () => {
+        setDrawerOpen(false);
+    };
 
     useEffect(() => {
         const handleHash = () => {
@@ -25,6 +28,11 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
         handleHash();
         window.addEventListener("hashchange", handleHash);
         return () => window.removeEventListener("hashchange", handleHash);
+    }, []);
+
+    useEffect(() => {
+        window.addEventListener("scroll", closeDrawer);
+        return () => window.removeEventListener("scroll", closeDrawer);
     }, []);
 
     return (
@@ -62,7 +70,10 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     style={{ right: drawerOpen ? "0px" : "200vw" }}
                     className="duration-500 max-lg:fixed z-[60] top-0 bg-no-repeat max-lg:bg-primary/20 max-lg:h-screen max-lg:p-8 max-lg:w-screen max-lg:backdrop-blur-md flex max-lg:flex-col lg:justify-between gap-8 [&>li:hover]:text-primary [&>li]:duration-500 [&>li]:cursor-pointer"
                 >
-                    <figure className="lg:hidden self-start">
+                    <figure
+                        onClick={closeDrawer}
+                        className="lg:hidden self-start"
+                    >
                         <a href={`/${lang}/`}>
                             <Image
                                 alt="dian fossey gorilla fund"
@@ -76,11 +87,12 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     </figure>
                     <span
                         className="lg:hidden text-3xl absolute right-12"
-                        onClick={() => setDrawerOpen(false)}
+                        onClick={closeDrawer}
                     >
                         <IoClose />
                     </span>
                     <li
+                        onClick={closeDrawer}
                         className={
                             hash == "" && pathname == `/${lang}`
                                 ? "text-primary"
@@ -91,6 +103,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     </li>
 
                     <li
+                        onClick={closeDrawer}
                         className={
                             hash == "#our-programs" || pathname != `/${lang}`
                                 ? "text-primary"
@@ -102,7 +115,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         </a>
                     </li>
 
-                    <li>
+                    <li onClick={closeDrawer}>
                         <a
                             href="https://gorillafund.org/who-we-are/"
                             target="_blank"
@@ -116,7 +129,10 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         </a>
                     </li>
 
-                    <li className={hash == "#contact-us" ? "text-primary" : ""}>
+                    <li
+                        onClick={closeDrawer}
+                        className={hash == "#contact-us" ? "text-primary" : ""}
+                    >
                         <a href="#contact-us">{t("header:navbar.contact")}</a>
                     </li>
 

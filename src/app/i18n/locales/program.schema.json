@@ -18,9 +18,19 @@
         },
         "next": {
             "$ref": "#/definitions/text"
+        },
+        "months": {
+            "$ref": "#/definitions/text"
         }
     },
-    "required": ["our-programs", "none-found", "all", "previous", "next"],
+    "required": [
+        "our-programs",
+        "none-found",
+        "all",
+        "previous",
+        "next",
+        "months"
+    ],
     "definitions": {
         "text": {
             "type": "string"

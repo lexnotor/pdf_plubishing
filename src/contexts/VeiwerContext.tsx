@@ -20,6 +20,7 @@ const ViewerContextProvider = ({
     children,
     data,
 }: ViewerContextProviderProps) => {
+    const [wSize, setWSize] = useState({ x: 0, y: 0 });
     const [screenS, setScreenS] = useState({ x: 0, y: 0 });
     const [isFullS, setIsFullS] = useState(false);
     const vp = useMemo(
@@ -48,6 +49,10 @@ const ViewerContextProvider = ({
             setScreenS({
                 x: sizeRef?.offsetWidth ?? 0,
                 y: sizeRef?.offsetHeight ?? 0,
+            });
+            setWSize({
+                x: window.innerWidth,
+                y: window.innerHeight,
             });
             setTimeout(() => {
                 setLoading(false);
@@ -98,6 +103,7 @@ const ViewerContextProvider = ({
                 containerRef,
                 isFullS,
                 pdfUrl,
+                wSize,
             }}
         >
             {children}

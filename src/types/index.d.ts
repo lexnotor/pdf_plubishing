@@ -33,6 +33,7 @@ export type ViewerContextType = {
     isFullS?: boolean;
 
     pdfUrl?: string;
+    wSize?: { x: number; y: number };
 };
 
 export type PageFlip = {

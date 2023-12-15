@@ -4,6 +4,7 @@ import { ProgramListProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import Space from "./Space";
+import { t } from "i18next";
 
 const ProgramList: (props: ProgramListProps) => JSX.Element = ({
     data,
@@ -30,6 +31,7 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({
         <ul className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
             {data.items.map((program, index) => {
                 const cover = program.fields?.cover?.fields?.file?.url;
+                const date = new Date(program.sys.createdAt);
                 return (
                     <li key={index} className="bg-white p-2">
                         <figure className="relative">
@@ -58,7 +60,12 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({
                                 </Link>
                             </p>
                             <p className="text-[75%] text-right text-neutral-400">
-                                Jan 2022
+                                {
+                                    `${t("program:months")}`.split(",")[
+                                        date.getMonth()
+                                    ]
+                                }{" "}
+                                {date.getFullYear()}
                             </p>
                         </div>
                     </li>

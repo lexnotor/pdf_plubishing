@@ -39,7 +39,7 @@ const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     <span>{t("header:p-2.text-2")}</span>
                 </p>
 
-                <div className="self-center flex max-sm:flex-col gap-6 items-center">
+                <div className="max-sm:px-4 sm:self-center flex max-sm:flex-col gap-6 sm:items-center">
                     <OpacityBtn>{t("header:btn-1")}</OpacityBtn>
                     <OpacityBtn type="secondary">
                         {t("header:btn-2")}

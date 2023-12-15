@@ -58,7 +58,7 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({
 
     return (
         <div className="w-full">
-            <ul className="flex flex-wrap gap-4 w-full">
+            <ul className="flex flex-wrap gap-1 sm:gap-4 w-full">
                 {main?.map((type, index) => {
                     const query = new URLSearchParams(searchParam);
                     query.set("main_type", type?.sys?.id);
@@ -83,7 +83,7 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({
                                     pathname,
                                     query: query.toString(),
                                 }}
-                                className="flex gap-2 items-center px-7 py-2"
+                                className="flex gap-2 items-center px-2 sm:px-7 py-2 max-sm:text-[85%]"
                                 scroll={false}
                             >
                                 <span>{type.fields.title}</span>
@@ -97,8 +97,8 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({
             </ul>
             <Space />
             <div className="flex gap-3">
-                <ul className="flex flex-wrap items-center overflow-auto gap-4 grow">
-                    <span className="shrink-0">
+                <ul className="flex flex-wrap items-center overflow-auto gap-1 sm:gap-4 grow">
+                    <span className="shrink-0 max-sm:text-[85%] max-sm:font-bold">
                         {
                             main?.find(
                                 (item) => item?.sys?.id == currentType.main,
@@ -123,7 +123,7 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({
                                     query: query.toString(),
                                 };
                             })()}
-                            className="px-7 py-2"
+                            className="px-2 sm:px-7 py-2 max-sm:text-[85%]"
                             scroll={false}
                         >
                             {t("program:all")}
@@ -155,7 +155,7 @@ const ProgramType: (props: ProgramTypeProps) => JSX.Element = ({
                                             pathname,
                                             query: query.toString(),
                                         }}
-                                        className="px-7 py-2"
+                                        className="px-2 sm:px-7 py-2 max-sm:text-[85%]"
                                         scroll={false}
                                     >
                                         {type.fields.title}

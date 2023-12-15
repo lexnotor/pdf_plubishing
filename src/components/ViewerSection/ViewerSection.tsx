@@ -14,7 +14,7 @@ const ViewerSection = async ({ lang, data, related }: ViewerSectionProps) => {
     return (
         <section className="relative bg-gradient-radial from-primary/20 from-5% to-50% to-white">
             <header
-                className="px-10 pt-6 pb-14 min-h-[55rem] max-h-[65rem] bg-cover text-white"
+                className="px-4 xl:px-10 pt-6 pb-8 sm:pb-14 min-h-screen sm:min-h-[55rem] max-h-[65rem] bg-cover text-white"
                 style={{ backgroundImage: `url(${bg_mountain.src})` }}
                 id="viewer-header"
             >

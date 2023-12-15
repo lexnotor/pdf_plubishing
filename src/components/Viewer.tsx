@@ -30,6 +30,7 @@ const Viewer = () => {
         containerRef,
         isFullS,
         pdfUrl,
+        wSize,
     } = useViewerContext();
 
     // list pages
@@ -39,11 +40,14 @@ const Viewer = () => {
         for (let i = 1; i <= numPage; i++)
             tab.push(
                 <div key={i}>
-                    <Page width={Math.ceil(vp / 2)} pageNumber={i} />
+                    <Page
+                        width={Math.ceil(wSize.x <= 640 ? vp : vp / 2)}
+                        pageNumber={i}
+                    />
                 </div>,
             );
         return tab;
-    }, [numPage, vp]);
+    }, [numPage, vp, wSize.x]);
 
     const loadHandler: LoadedPdfHandler = async (doc) => {
         setNumPage(doc.numPages);
@@ -76,8 +80,11 @@ const Viewer = () => {
                             <></>
                         ) : (
                             <HTMLFlipBook
-                                width={vp / 2}
-                                height={vp / 2 / (ratio || 1)}
+                                width={wSize.x <= 640 ? vp : vp / 2}
+                                height={
+                                    (wSize.x <= 640 ? vp : vp / 2) /
+                                    (ratio || 1)
+                                }
                                 ref={(flip) => (flipRef.current = flip)}
                                 autoSize
                                 showPageCorners={false}
@@ -86,7 +93,7 @@ const Viewer = () => {
                                 style={{}}
                                 className=""
                                 clickEventForward
-                                disableFlipByClick={false}
+                                disableFlipByClick={wSize.x <= 640}
                                 flippingTime={700}
                                 startPage={0}
                                 size={"fixed"}
@@ -107,7 +114,7 @@ const Viewer = () => {
                         )}
                     </Document>
                     {isFullS ? (
-                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 temp-transparent opacity-5 hover:opacity-100 duration-500 shadow-xl">
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 temp-transparent sm:opacity-5 hover:opacity-100 duration-500 shadow-xl">
                             <Space />
                             <ButtonCommande />
                         </div>
@@ -116,7 +123,7 @@ const Viewer = () => {
             </div>
 
             <button
-                className="absolute top-1/2 -left-12 hover:bg-white/50 text-gray-400 hover:text-black rounded-full p-2 duration-500"
+                className="max-sm:hidden absolute top-1/2 -left-12 hover:bg-white/50 text-gray-400 hover:text-black rounded-full p-2 duration-500"
                 onClick={() => flipRef.current.pageFlip().flipPrev("top")}
             >
                 <span className="text-3xl ">
@@ -124,7 +131,7 @@ const Viewer = () => {
                 </span>
             </button>
             <button
-                className="absolute top-1/2 -right-12 hover:bg-white/50 text-gray-400 hover:text-black rounded-full p-2 duration-500"
+                className="max-sm:hidden absolute top-1/2 -right-12 hover:bg-white/50 text-gray-400 hover:text-black rounded-full p-2 duration-500"
                 onClick={() => flipRef.current.pageFlip().flipNext("top")}
             >
                 <span className="text-3xl ">

@@ -41,9 +41,9 @@ const ButtonCommande = () => {
     return (
         <div
             style={{ marginBottom }}
-            className="flex gap-8 items-center bg-white w-fit rounded-r-full rounded-l-full mx-auto p-1"
+            className="flex gap-4 sm:gap-8 items-center bg-white w-fit rounded-r-full rounded-l-full mx-auto p-1"
         >
-            <div className="flex gap-4 justify-center items-center ">
+            <div className="flex sm:gap-4 justify-center items-center ">
                 <Space size="0" sizeX="0.5rem" />
                 <button
                     className="flex gap-4"
@@ -100,7 +100,7 @@ const ButtonCommande = () => {
                         : containerRef.current.requestFullscreen();
                 }}
             >
-                <span className="text-[85%]">
+                <span className="text-[85%] max-sm:hidden">
                     {isFullS ? "Normal" : "FullScreen"}
                 </span>
                 <span className="text-xl rotate-90">
@@ -112,7 +112,7 @@ const ButtonCommande = () => {
                 download
                 className="flex gap-4 items-center justify-center py-3 px-6 text-white bg-primary rounded-r-full rounded-l-full"
             >
-                <span>Download</span>
+                <span className="max-sm:hidden">Download</span>
                 <span className="text-xl">
                     <AiOutlineDownload />
                 </span>
