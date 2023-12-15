@@ -51,10 +51,12 @@ export const generateMetadata: (
 
     return {
         title: `${title} - Dian Fossey Gorilla Fund`,
-        authors: {
-            name: "Dian Fossey",
-            url: "https://www.linkedin.com/company/savinggorillas",
-        },
+        authors: [
+            {
+                name: "Dian Fossey",
+                url: "https://www.linkedin.com/company/savinggorillas",
+            },
+        ],
         category: mag.sys.type,
         classification: mag.fields.category.fields.title,
         description: `Magazine - ${title} - Dian Fossey Gorilla Fund`,
@@ -64,7 +66,7 @@ export const generateMetadata: (
             locale: params?.lang,
             authors: "Dian Fossey",
             description: `${title} - Dian Fossey Gorilla Fund`,
-            emails: "earchibald@gorillafund.org",
+            emails: ["earchibald@gorillafund.org"],
             images: `https:${cover}`,
             siteName: "Dian Fossey Gorilla Fund",
             modifiedTime: mag.sys.updatedAt,
@@ -83,6 +85,7 @@ export const generateMetadata: (
         verification: {
             google: "hDu4cCDxXZzVMcHtqb9iEiUzufoXI3MorVBPDQcEbm0",
         },
+        metadataBase: new URL("https://gorilla-fund.vercel.app"),
     };
 };
 
