@@ -1,5 +1,6 @@
 "use client";
 import logo from "@/assets/images/logo_text.png";
+import logo_s from "@/assets/images/logo.png";
 import { RouteParam } from "@/types";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -27,7 +28,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     }, []);
 
     return (
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center max-sm:gap-4">
             <figure className="max-lg:order-1">
                 <a href={`/${lang}/`}>
                     <Image
@@ -35,7 +36,15 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         src={logo}
                         width={200}
                         height={100}
-                        className="w-auto max-h-24"
+                        className="w-auto max-h-24 max-sm:hidden"
+                        title="Dian Fossey Gorilla Fund Logo"
+                    />
+                    <Image
+                        alt="dian fossey gorilla fund"
+                        src={logo_s}
+                        width={200}
+                        height={100}
+                        className="w-auto sm:hidden max-h-24 scale-[1.9] translate-x-2"
                         title="Dian Fossey Gorilla Fund Logo"
                     />
                 </a>
@@ -43,7 +52,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
 
             <nav className="max-lg:order-3">
                 <span
-                    className="lg:hidden text-2xl"
+                    className="lg:hidden text-3xl"
                     onClick={() => setDrawerOpen(true)}
                 >
                     <FiMenu />
@@ -123,7 +132,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 </ul>
             </nav>
 
-            <div className="max-lg:order-2">
+            <div className="max-lg:order-2 max-sm:scale-90">
                 <Search lang={lang} />
             </div>
 

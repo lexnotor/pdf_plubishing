@@ -12,7 +12,7 @@ const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
 
     return (
         <header
-            className="px-4 xl:px-10 pt-6 pb-14 text-white min-h-[55rem] max-h-[65rem] bg-cover"
+            className="px-4 xl:px-10 pt-6 pb-8 sm:pb-14 text-white min-h-screen sm:min-h-[55rem] max-h-[65rem] bg-cover"
             style={{ backgroundImage: `url(${bg_mountain.src})` }}
         >
             <div className="flex flex-col gap-8 justify-between container">
@@ -20,21 +20,26 @@ const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
 
                 <Space />
 
-                <p className="self-center text-5xl font-bold flex flex-col items-center text-center">
+                <p className="self-center text-3xl sm:text-5xl font-bold sm:flex flex-col items-center text-center">
                     <span>{t("header:p-1.text-1")}</span>
                     <span>{t("header:p-1.text-2")}</span>
                 </p>
 
                 <figure className="self-center">
-                    <Image alt="play icon" src={play_icon} width={150} />
+                    <Image
+                        alt="play icon"
+                        src={play_icon}
+                        width={150}
+                        className="max-sm:w-24"
+                    />
                 </figure>
 
-                <p className="self-center flex flex-col items-center text-center">
+                <p className="self-center sm:flex flex-col items-center text-center">
                     <span>{t("header:p-2.text-1")}</span>
                     <span>{t("header:p-2.text-2")}</span>
                 </p>
 
-                <div className="self-center flex gap-6 items-center">
+                <div className="self-center flex max-sm:flex-col gap-6 items-center">
                     <OpacityBtn>{t("header:btn-1")}</OpacityBtn>
                     <OpacityBtn type="secondary">
                         {t("header:btn-2")}

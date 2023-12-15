@@ -9,7 +9,7 @@ const Search: (props: Pick<RouteParam["params"], "lang">) => JSX.Element = ({
 }) => {
     const { t } = useTranslation(lang, "header");
     return (
-        <div className="border rounded-l-full rounded-r-full border-white px-5 py-1 flex gap-2">
+        <div className="border rounded-l-full rounded-r-full border-white px-3 sm:px-5 py-1 flex gap-2">
             <input
                 type="search"
                 placeholder={t("header:search.placeholder")}
