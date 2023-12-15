@@ -1,7 +1,7 @@
 import { magazineService } from "@/apis/services/magazine.service";
 import ViewerSection from "@/components/ViewerSection";
 import { RouteParam } from "@/types";
-import { Metadata } from "next";
+import { Metadata, ResolvedMetadata } from "next";
 import { notFound } from "next/navigation";
 
 const Page = async ({ params }: RouteParam) => {
@@ -43,7 +43,7 @@ export const generateMetadata: (
         params: Partial<RouteParam["params"]>;
         searchParams: URLSearchParams;
     },
-    parent: Promise<Metadata>,
+    parent: ResolvedMetadata,
 ) => Promise<Metadata> = async ({ params }) => {
     const mag = await magazineService.getOneMagazine(params.mag_title);
     const title = mag?.fields?.title ?? "Magazine";
