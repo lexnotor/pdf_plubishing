@@ -43,7 +43,7 @@ export const generateMetadata: (
         params: Partial<RouteParam["params"]>;
         searchParams: URLSearchParams;
     },
-    parent: ResolvedMetadata,
+    parent: Promise<ResolvedMetadata>,
 ) => Promise<Metadata> = async ({ params }) => {
     const mag = await magazineService.getOneMagazine(params.mag_title);
     const title = mag?.fields?.title ?? "Magazine";
