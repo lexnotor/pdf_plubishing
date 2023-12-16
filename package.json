@@ -11,10 +11,14 @@
   "dependencies": {
     "antd": "^5.12.1",
     "contentful": "^10.6.14",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
     "framer-motion": "^10.16.12",
+    "google-auth-library": "^9.4.1",
     "i18next": "^23.7.8",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-resources-to-backend": "^1.2.0",
+    "mimetext": "^3.0.16",
     "next": "14.0.3",
     "pdfjs-dist": "^4.0.269",
     "react": "^18",
@@ -25,6 +29,7 @@
     "react-pdf": "^7.5.1"
   },
   "devDependencies": {
+    "@types/ejs": "^3.1.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
