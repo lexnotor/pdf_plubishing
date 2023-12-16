@@ -149,7 +149,13 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
             </nav>
 
             <div className="max-lg:order-2 max-sm:scale-90">
-                <Search lang={lang} />
+                <Suspense
+                    fallback={
+                        <div className="border-t-2 border-t-secondary rounded-full animate-spin w-4 h-4" />
+                    }
+                >
+                    <Search lang={lang} />
+                </Suspense>
             </div>
 
             <div className="max-lg:order-4 max-lg:hidden">

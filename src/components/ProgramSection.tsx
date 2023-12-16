@@ -31,6 +31,7 @@ const ProgramSection: (
         main: null,
         sub: null,
     });
+    const currentSearch = useRef<string>(null);
 
     const currentPage = useMemo(
         () => +(searchParam.get("page") ?? 1),
@@ -44,10 +45,13 @@ const ProgramSection: (
             currentType.current.main != searchParam.get("main_type") ||
             currentType.current.sub != searchParam.get("sub_type");
 
+        const searchChanged = currentSearch.current != searchParam.get("s");
+
         currentType.current.main = searchParam.get("main_type");
         currentType.current.sub = searchParam.get("sub_type");
+        currentSearch.current = searchParam.get("s");
 
-        if (programs[currentPage - 1] && !typeChanged) return;
+        if (programs[currentPage - 1] && !typeChanged && !searchChanged) return;
 
         magazineService
             .getMagazines(
@@ -59,12 +63,13 @@ const ProgramSection: (
                         currentType.current.main ?? undefined,
                     "fields.category.sys.id":
                         currentType.current.sub ?? undefined,
+                    "fields.title[match]": currentSearch.current ?? undefined,
                 },
                 lang,
             )
             .then((data) =>
                 setPrograms((old) => {
-                    const val = [...old];
+                    const val = typeChanged ? [] : [...old];
                     val[currentPage - 1] = data;
                     return val;
                 }),
