@@ -28,7 +28,7 @@ const sitemap: () => Promise<MetadataRoute.Sitemap> = async () => {
             changeFrequency: "weekly",
             url: `${baseUrl}/${lang}/${item.sys.id}`,
             lastModified: new Date(),
-            priority: 2,
+            priority: 0.8,
         }));
 
         map.push(...cur);
@@ -39,13 +39,13 @@ const sitemap: () => Promise<MetadataRoute.Sitemap> = async () => {
             changeFrequency: "weekly",
             url: `${baseUrl}/en`,
             lastModified: new Date(),
-            priority: 1,
+            priority: 1.0,
         },
         {
             changeFrequency: "weekly",
             url: `${baseUrl}/fr`,
             lastModified: new Date(),
-            priority: 1,
+            priority: 1.0,
         },
         ...map,
     ];
