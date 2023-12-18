@@ -27,7 +27,6 @@ const ContactSection = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         {t("contact:title-2")}
                     </h4>
                     <ul>
-                        <a href=""></a>
                         <li>
                             <a href="tel:+(404) 624-5881">(404) 624-5881</a>
                         </li>
