@@ -131,7 +131,7 @@ const MessageForm = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                 <div>
                     <button
                         disabled={loading}
-                        className="disabled:cursor-progress flex gap-2 bg-secondary text-white py-5 px-11 rounded-r-full rounded-l-full font-semibold"
+                        className="disabled:cursor-progress flex gap-2 bg-secondary text-white py-3 px-11 rounded-r-full rounded-l-full font-semibold"
                     >
                         {loading ? (
                             <div className="w-4 h-4 rounded-full border-transparent border-2 border-t-teal-50 animate-spin" />

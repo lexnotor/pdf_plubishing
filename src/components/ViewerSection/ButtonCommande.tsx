@@ -109,6 +109,8 @@ const ButtonCommande = () => {
             </button>
             <a
                 href={pdfUrl}
+                rel="noopener noreferrer"
+                target="_blank"
                 download
                 className="flex gap-4 items-center justify-center py-3 px-6 text-white bg-primary rounded-r-full rounded-l-full"
             >

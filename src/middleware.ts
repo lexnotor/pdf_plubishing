@@ -22,6 +22,6 @@ export const config = {
     // execute for each request not in
     // api/, _next/static/, _next/image/, asserts/, favicon.ico, sw.js
     matcher: [
-        "/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|pdf).*)",
+        "/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|pdf|robots|sitemap).*)",
     ],
 };

@@ -44,7 +44,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         src={logo}
                         width={200}
                         height={100}
-                        className="w-auto max-h-24 max-sm:hidden"
+                        className="w-auto max-h-16 max-sm:hidden"
                         title="Dian Fossey Gorilla Fund Logo"
                     />
                     <Image
@@ -52,7 +52,7 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         src={logo_s}
                         width={200}
                         height={100}
-                        className="w-auto sm:hidden max-h-24 scale-[1.9] translate-x-2"
+                        className="w-auto sm:hidden max-h-16 scale-[1.9] translate-x-2"
                         title="Dian Fossey Gorilla Fund Logo"
                     />
                 </a>
