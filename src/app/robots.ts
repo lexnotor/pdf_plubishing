@@ -10,7 +10,7 @@ const robots: () => MetadataRoute.Robots = () => {
                 allow: languages.map((lang) => `/${lang}`),
             },
         ],
-        sitemap: "https://gorilla-fund.vercel.app",
+        sitemap: "https://gorilla-fund.vercel.app/sitemap.xml",
     };
 };
 
