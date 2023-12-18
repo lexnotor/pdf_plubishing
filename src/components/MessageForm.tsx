@@ -49,7 +49,7 @@ const MessageForm = ({ lang }: Pick<RouteParam["params"], "lang">) => {
     return (
         <div>
             {contextHolder}
-            <h2 className="text-4xl font-semibold">
+            <h2 className="text-3xl md:text-4xl font-semibold">
                 {t("contact:form-title")}
             </h2>
             <Space size="0.4rem" />

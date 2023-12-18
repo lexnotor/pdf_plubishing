@@ -70,6 +70,7 @@ export type PageFlip = {
 export type ProgramListProps = Pick<RouteParam["params"], "lang"> & {
     data: EntryCollection<MagazineEntry, "WITHOUT_UNRESOLVABLE_LINKS">;
     i18nT: TFunction<Namespace>;
+    noneFound?: string;
 };
 
 export type ProgramTypeProps = Pick<RouteParam["params"], "lang"> & {

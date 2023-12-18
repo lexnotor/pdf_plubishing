@@ -38,7 +38,12 @@ const JourneySection = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
             </p>
 
             <figure className="self-center my-auto">
-                <Image alt="play icon" src={play_icon} width={150} />
+                <Image
+                    alt="play icon"
+                    src={play_icon}
+                    width={150}
+                    className="max-sm:w-24"
+                />
             </figure>
         </div>
     );

@@ -7,9 +7,10 @@ import Space from "../Space";
 import Viewer from "../Viewer";
 import ButtonCommande from "./ButtonCommande";
 import { useTranslation } from "@/app/i18n";
+import CustomSpace from "./CustomSpace";
 
 const ViewerSection = async ({ lang, data, related }: ViewerSectionProps) => {
-    const { t } = await useTranslation(lang, "contact");
+    const { t } = await useTranslation(lang, "program");
 
     return (
         <section className="relative bg-gradient-radial from-primary/20 from-5% to-50% to-white">
@@ -35,6 +36,7 @@ const ViewerSection = async ({ lang, data, related }: ViewerSectionProps) => {
                         <ButtonCommande />
                     </div>
                 </div>
+                <CustomSpace />
             </ViewerContextProvider>
 
             <Space />

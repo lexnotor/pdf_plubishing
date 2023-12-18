@@ -76,47 +76,64 @@ const Viewer = () => {
                     style={{ width: vp, margin: "0 auto" }}
                     className="hover:overflow-hidden"
                 >
-                    <Document
-                        file={pdfUrl}
-                        onLoadSuccess={loadHandler}
-                        className="mx-auto"
-                    >
-                        {numPage == 0 && !loading ? (
-                            <></>
-                        ) : (
-                            <HTMLFlipBook
-                                width={wSize.x <= sm ? vp : vp / 2}
-                                height={
-                                    (wSize.x <= sm ? vp : vp / 2) / (ratio || 1)
-                                }
-                                ref={(flip) => (flipRef.current = flip)}
-                                autoSize
-                                showPageCorners={false}
-                                drawShadow
-                                showCover
-                                style={{}}
-                                className=""
-                                clickEventForward
-                                disableFlipByClick={wSize.x <= sm}
-                                flippingTime={700}
-                                startPage={0}
-                                size={"fixed"}
-                                minWidth={0}
-                                maxWidth={0}
-                                minHeight={0}
-                                maxHeight={0}
-                                usePortrait
-                                startZIndex={0}
-                                maxShadowOpacity={0}
-                                mobileScrollSupport={true}
-                                useMouseEvents={true}
-                                swipeDistance={0}
-                                key={vp}
-                            >
-                                {listPage}
-                            </HTMLFlipBook>
-                        )}
-                    </Document>
+                    {pdfUrl ? (
+                        <Document
+                            file={pdfUrl}
+                            onLoadSuccess={loadHandler}
+                            className="mx-auto"
+                            loading={() => (
+                                <div className="h-[80vh] flex items-center justify-center">
+                                    <span className="w-12 h-12 border-2 border-transparent border-t-primary rounded-full animate-spin" />
+                                </div>
+                            )}
+                            error={() => (
+                                <div className="h-[80vh] flex items-center justify-center">
+                                    <span className="w-12 h-12 border-2 border-transparent border-t-primary rounded-full animate-spin" />
+                                </div>
+                            )}
+                        >
+                            {numPage == 0 && !loading ? (
+                                <></>
+                            ) : (
+                                <HTMLFlipBook
+                                    width={wSize.x <= sm ? vp : vp / 2}
+                                    height={
+                                        (wSize.x <= sm ? vp : vp / 2) /
+                                        (ratio || 1)
+                                    }
+                                    ref={(flip) => (flipRef.current = flip)}
+                                    autoSize
+                                    showPageCorners={false}
+                                    drawShadow
+                                    showCover
+                                    style={{}}
+                                    className=""
+                                    clickEventForward
+                                    disableFlipByClick={wSize.x <= sm}
+                                    flippingTime={700}
+                                    startPage={0}
+                                    size={"fixed"}
+                                    minWidth={0}
+                                    maxWidth={0}
+                                    minHeight={0}
+                                    maxHeight={0}
+                                    usePortrait
+                                    startZIndex={0}
+                                    maxShadowOpacity={0}
+                                    mobileScrollSupport={true}
+                                    useMouseEvents={true}
+                                    swipeDistance={0}
+                                    key={vp}
+                                >
+                                    {listPage}
+                                </HTMLFlipBook>
+                            )}
+                        </Document>
+                    ) : (
+                        <div className="h-[80vh] flex items-center justify-center">
+                            <span className="w-12 h-12 border-2 border-transparent border-t-primary rounded-full animate-spin" />
+                        </div>
+                    )}
                 </div>
                 {isFullS ? (
                     <div className="absolute bottom-8 left-1/2 -translate-x-1/2 temp-transparent sm:opacity-5 hover:opacity-100 duration-500 shadow-xl">

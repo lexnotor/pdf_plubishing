@@ -7,44 +7,16 @@ import {
 } from "react-icons/io5";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
 import Space from "../Space";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 
 const ButtonCommande = () => {
-    const {
-        pageNum,
-        numPage,
-        flipRef,
-        containerRef,
-        isFullS,
-        pdfUrl,
-        loading,
-    } = useViewerContext();
-
-    const marginBottom = useMemo(() => {
-        if (isFullS) return "0vh";
-        if (typeof document == "undefined") return "20vh";
-        const viewerNode = document.querySelector("#viewer")
-            ?.firstChild as HTMLDivElement;
-        const viewerHeader = document.querySelector(
-            "#viewer-header",
-        ) as HTMLDivElement;
-        loading;
-
-        if (viewerNode && viewerHeader) {
-            const val =
-                viewerHeader.offsetHeight - viewerNode.offsetHeight - 300;
-            return val < 0 ? "0px" : val + "px";
-        }
-        return "20vh";
-    }, [loading, isFullS]);
+    const { pageNum, numPage, flipRef, containerRef, isFullS, pdfUrl } =
+        useViewerContext();
 
     useEffect(() => {});
 
     return (
-        <div
-            style={{ marginBottom }}
-            className="flex gap-4 sm:gap-8 items-center bg-white w-fit rounded-r-full rounded-l-full mx-auto p-1"
-        >
+        <div className="flex gap-4 sm:gap-8 items-center bg-white w-fit rounded-r-full rounded-l-full mx-auto p-1">
             <div className="flex sm:gap-4 justify-center items-center ">
                 <Space size="0" sizeX="0.5rem" />
                 <button
