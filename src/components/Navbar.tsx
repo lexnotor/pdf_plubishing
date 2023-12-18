@@ -43,7 +43,6 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         alt="dian fossey gorilla fund"
                         src={logo}
                         width={200}
-                        height={100}
                         className="w-auto max-h-16 max-sm:hidden"
                         title="Dian Fossey Gorilla Fund Logo"
                     />
@@ -51,7 +50,6 @@ const Navbar = ({ lang }: Pick<RouteParam["params"], "lang">) => {
                         alt="dian fossey gorilla fund"
                         src={logo_s}
                         width={200}
-                        height={100}
                         className="w-auto sm:hidden max-h-16 scale-[1.9] translate-x-2"
                         title="Dian Fossey Gorilla Fund Logo"
                     />
