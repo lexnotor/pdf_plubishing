@@ -34,18 +34,20 @@ const ProgramList: (props: ProgramListProps) => JSX.Element = ({
                 const date = new Date(program.sys.createdAt);
                 return (
                     <li key={index} className="bg-white p-2">
-                        <figure className="relative">
-                            <Image
-                                alt="Saving Earth Magazine - Preserve british collumbia’s, The impact Report"
-                                src={cover ? `https:${cover}` : gorilla404}
-                                className="w-full object-cover"
-                                width={300}
-                                height={300}
-                            />
-                            <span className="p-3 bg-white/40 rounded-full flex items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                <Image alt="open_book" src={open_book} />
-                            </span>
-                        </figure>
+                        <Link href={`${lang}/${program.sys?.id}`}>
+                            <figure className="relative">
+                                <Image
+                                    alt="Saving Earth Magazine - Preserve british collumbia’s, The impact Report"
+                                    src={cover ? `https:${cover}` : gorilla404}
+                                    className="w-full object-cover"
+                                    width={300}
+                                    height={300}
+                                />
+                                <span className="p-3 bg-white/40 rounded-full flex items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                                    <Image alt="open_book" src={open_book} />
+                                </span>
+                            </figure>
+                        </Link>
                         <Space size="0.2rem" />
                         <div>
                             <p className="text-[75%] text-primary">

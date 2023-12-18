@@ -10,8 +10,8 @@ import HTMLFlipBook from "react-pageflip";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
-import ButtonCommande from "./ViewerSection/ButtonCommande";
 import Space from "./Space";
+import ButtonCommande from "./ViewerSection/ButtonCommande";
 
 // for more details, visit
 // https://www.npmjs.com/package/react-pdf?activeTab=readme
@@ -33,6 +33,8 @@ const Viewer = () => {
         wSize,
     } = useViewerContext();
 
+    const sm = 800;
+
     // list pages
     const listPage = useMemo(() => {
         if (numPage == 0) return [];
@@ -41,7 +43,7 @@ const Viewer = () => {
             tab.push(
                 <div key={i}>
                     <Page
-                        width={Math.ceil(wSize.x <= 640 ? vp : vp / 2)}
+                        width={Math.ceil(wSize.x <= sm ? vp : vp / 2)}
                         pageNumber={i}
                     />
                 </div>,
@@ -70,7 +72,10 @@ const Viewer = () => {
                 className={`relative  ${isFullS ? "mx-auto" : ""}`}
                 ref={containerRef}
             >
-                <div style={{ width: vp, margin: "0 auto" }}>
+                <div
+                    style={{ width: vp, margin: "0 auto" }}
+                    className="hover:overflow-hidden"
+                >
                     <Document
                         file={pdfUrl}
                         onLoadSuccess={loadHandler}
@@ -80,10 +85,9 @@ const Viewer = () => {
                             <></>
                         ) : (
                             <HTMLFlipBook
-                                width={wSize.x <= 640 ? vp : vp / 2}
+                                width={wSize.x <= sm ? vp : vp / 2}
                                 height={
-                                    (wSize.x <= 640 ? vp : vp / 2) /
-                                    (ratio || 1)
+                                    (wSize.x <= sm ? vp : vp / 2) / (ratio || 1)
                                 }
                                 ref={(flip) => (flipRef.current = flip)}
                                 autoSize
@@ -93,7 +97,7 @@ const Viewer = () => {
                                 style={{}}
                                 className=""
                                 clickEventForward
-                                disableFlipByClick={wSize.x <= 640}
+                                disableFlipByClick={wSize.x <= sm}
                                 flippingTime={700}
                                 startPage={0}
                                 size={"fixed"}
@@ -113,13 +117,13 @@ const Viewer = () => {
                             </HTMLFlipBook>
                         )}
                     </Document>
-                    {isFullS ? (
-                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 temp-transparent sm:opacity-5 hover:opacity-100 duration-500 shadow-xl">
-                            <Space />
-                            <ButtonCommande />
-                        </div>
-                    ) : null}
                 </div>
+                {isFullS ? (
+                    <div className="absolute bottom-8 left-1/2 -translate-x-1/2 temp-transparent sm:opacity-5 hover:opacity-100 duration-500 shadow-xl">
+                        <Space />
+                        <ButtonCommande />
+                    </div>
+                ) : null}
             </div>
 
             <button

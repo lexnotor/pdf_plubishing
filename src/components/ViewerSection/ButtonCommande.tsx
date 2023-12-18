@@ -7,7 +7,7 @@ import {
 } from "react-icons/io5";
 import { MdOutlineCloseFullscreen } from "react-icons/md";
 import Space from "../Space";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 const ButtonCommande = () => {
     const {
@@ -37,6 +37,8 @@ const ButtonCommande = () => {
         }
         return "20vh";
     }, [loading, isFullS]);
+
+    useEffect(() => {});
 
     return (
         <div
