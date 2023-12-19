@@ -1,11 +1,10 @@
+import { useTranslation } from "@/app/i18n";
 import bg_mountain from "@/assets/images/bg_mountain.jpg";
-import play_icon from "@/assets/images/custom_play.svg";
-import Image from "next/image";
+import { RouteParam } from "@/types";
 import { OpacityBtn } from "./Button";
+import ModalVideo from "./ModalVideo";
 import Navbar from "./Navbar";
 import Space from "./Space";
-import { RouteParam } from "@/types";
-import { useTranslation } from "@/app/i18n";
 
 const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
     const { t } = await useTranslation(lang, "header");
@@ -25,14 +24,11 @@ const Header = async ({ lang }: Pick<RouteParam["params"], "lang">) => {
                     <span>{t("header:p-1.text-2")}</span>
                 </p>
 
-                <figure className="self-center">
-                    <Image
-                        alt="play icon"
-                        src={play_icon}
-                        width={150}
-                        className="max-sm:w-24"
+                <div className="self-center">
+                    <ModalVideo
+                        urls={"https://www.youtube.com/watch?v=fnvjkzrWguI"}
                     />
-                </figure>
+                </div>
 
                 <p className="self-center md:flex flex-col items-center text-center">
                     <span>{t("header:p-2.text-1")}</span>{" "}

@@ -90,3 +90,7 @@ export type ProgramPaginationProps = Pick<RouteParam["params"], "lang"> & {
     total: number;
     pageSize: number;
 };
+
+export type ModalVideoProps = {
+    urls: string | string[];
+};
