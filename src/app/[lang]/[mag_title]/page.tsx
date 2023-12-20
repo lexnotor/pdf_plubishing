@@ -60,7 +60,13 @@ export const generateMetadata: (
         category: mag.sys.type,
         classification: mag.fields.category.fields.title,
         description: `Magazine - ${title} - Dian Fossey Gorilla Fund`,
-        keywords: ["Dian", "Fossey", "Gorilla Fund", "Magazines"],
+        keywords: [
+            "Dian",
+            "Fossey",
+            "Gorilla Fund",
+            "Magazines",
+            ...title.split(" "),
+        ],
         openGraph: {
             type: "article",
             locale: params?.lang,

@@ -13,6 +13,23 @@ export const metadata: Metadata = {
     verification: {
         google: "hDu4cCDxXZzVMcHtqb9iEiUzufoXI3MorVBPDQcEbm0",
     },
+    publisher: "Gorilla Fund",
+    referrer: "origin",
+    robots: {
+        follow: true,
+        index: true,
+        googleBot: {
+            follow: true,
+            index: true,
+        },
+    },
+    authors: [
+        {
+            name: "Dian Fossey",
+            url: "https://www.linkedin.com/company/savinggorillas",
+        },
+    ],
+    keywords: ["Dian", "Fossey", "Gorilla Fund", "Magazines"],
 };
 
 export const generateStaticParams: () => Partial<
