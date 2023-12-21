@@ -38,6 +38,8 @@ const ProgramSection: (
         [searchParam],
     );
 
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         if (!categories) return;
 
@@ -60,7 +62,7 @@ const ProgramSection: (
                 inline: "start",
             });
         }
-
+        setLoading(true);
         magazineService
             .getMagazines(
                 {
@@ -81,7 +83,8 @@ const ProgramSection: (
                     val[currentPage - 1] = data;
                     return val;
                 }),
-            );
+            )
+            .finally(() => setLoading(false));
     }, [currentPage, programs, searchParam, categories, lang]);
 
     useEffect(() => {
@@ -105,11 +108,17 @@ const ProgramSection: (
 
             <Space />
 
-            <ProgramList
-                data={programs[currentPage - 1] ?? null}
-                lang={lang}
-                i18nT={t}
-            />
+            {loading ? (
+                <div className="py-8 flex justify-center items-center">
+                    <span className="w-8 h-8 border-transparent border-2 border-t-primary rounded-full animate-spin" />
+                </div>
+            ) : (
+                <ProgramList
+                    data={programs[currentPage - 1] ?? null}
+                    lang={lang}
+                    i18nT={t}
+                />
+            )}
 
             <Space />
 
