@@ -53,6 +53,14 @@ const ProgramSection: (
 
         if (programs[currentPage - 1] && !typeChanged && !searchChanged) return;
 
+        if (currentSearch.current && document.querySelector("#our-programs")) {
+            document.querySelector("#our-programs").scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+                inline: "start",
+            });
+        }
+
         magazineService
             .getMagazines(
                 {
